@@ -16,18 +16,11 @@ angular.module('Roundup', ['ui.router'])
   	.state('signup', {
     	url: '/signup',
     	templateUrl: 'js/app/views/signup.html',
-    // controller: 'PollCtrl'
+  	})
+  	.state('interview', {
+    	url: '/interview',
+    	templateUrl: 'js/app/views/interview.html',
   	});
-	// .state('post', {
-	// 	url: '/post/:id',
-	// 	templateUrl: 'app/views/post.html',
-	// 	controller: 'PostCtrl'
-	// })
-	// .state('edit-post', {
-	// 	url: '/post/:id/edit',
-	// 	templateUrl: 'app/views/post_edit.html',
-	// 	controller: 'PostCtrl'
-	// });
 
 	$locationProvider.html5Mode(true);
 
