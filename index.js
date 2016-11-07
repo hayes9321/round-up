@@ -8,7 +8,6 @@ var http = require('http').Server(app);
 var User = require('./models/user');
 var secret = "mysupersecretpassword";
 
-//mongoose.connect('mongodb://localhost:27017/myauthenticatedusers');
 mongoose.connect('mongodb://localhost/roundup');
 
 app.use('/api/users', require('./controllers/users'));
