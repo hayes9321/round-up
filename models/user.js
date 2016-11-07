@@ -3,7 +3,9 @@ var bcrypt   = require('bcrypt');
 
 
 var UserSchema = mongoose.Schema({
-  name: String,
+  firstName: String,
+  lastName: String,
+  title: String,
   email: String,
   password: String
 });
@@ -14,8 +16,10 @@ UserSchema.set('toJSON', {
     transform: function(doc, ret, options) {
         var returnJson = {
             id: ret._id,
-            email: ret.email,
-            name: ret.name
+            firstName: ret.firstName,
+            lastName: ret.lastName,
+            title: ret.title,
+            email: ret.email
         };
         return returnJson;
     }
