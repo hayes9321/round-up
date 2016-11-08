@@ -20,7 +20,15 @@ angular.module('Roundup', ['ui.router'])
   	.state('interview', {
     	url: '/interview',
     	templateUrl: 'js/app/views/interview.html',
-  	});
+  	})
+    .state('modal', {
+      url: '/modal',
+      templateUrl: 'js/app/views/modal.html',
+    });
+
+
+
+
 
 	$locationProvider.html5Mode(true);
 
