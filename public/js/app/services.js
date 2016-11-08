@@ -20,4 +20,18 @@ angular.module('Roundup')
     });
   }
 
+}])
+.service('CandidateService', ['$http', function($http) {
+  this.getAllCandidates = function(callback) {
+    $http({
+      url: '/api/candidates',
+      method: 'GET'
+    }).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
 }]);
+

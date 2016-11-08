@@ -1,0 +1,5 @@
+<ul>
+  <li ng-repeat="candidate in candidateList.candidates | orderBy: 'firstName'">
+   {{candidate.firstName}} {{candidate.lastName}}
+  </li>
+</ul>
