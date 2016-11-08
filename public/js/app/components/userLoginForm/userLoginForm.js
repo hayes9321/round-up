@@ -18,8 +18,8 @@
     userLoginForm.authUser = function(){
       UserService.getAllUsers(function(data) {
          userLoginForm.users = data.data;
-      //   $state.go('home', {}, {reload : true});
-      // });
+         $state.go('home', {}, {reload : true});
+      });
       console.log('clicked');
     }
   }
