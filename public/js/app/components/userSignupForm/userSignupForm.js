@@ -20,7 +20,7 @@
 
 		//send the new object to services
 		userSignupForm.submitUser = function(){
-			UserService.addUser(userSignupForm.newUser, function(data) {
+			UserService.addUser(userSignupForm.newUser, function(res) {
 	      UserService.getAllUsers(function(data) {
 	        userSignupForm.users = data.data;
 	        //$state.go('home', {}, {reload : true});

@@ -18,7 +18,7 @@ app.use(require('morgan')('dev'));
 
 
 app.use('/api/auth', require('./controllers/auth'));
-app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}));
+app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}, require('./controllers/users')));
 
 app.use(function (err, req, res, next) {
   // send an appropriate status code & JSON object saying there was an error, if there was one.
