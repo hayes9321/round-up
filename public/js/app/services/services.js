@@ -15,11 +15,11 @@ angular.module('Roundup')
     $http.post('/api/users', userData).then(function success(res) {
       callback(res);
     }, function error(res) {
+      console.log('error')
+      console.log(userData)
       console.log(res);
-      console.log('addUser')
     });
   }
-
 }])
 .service('CandidateService', ['$http', function($http) {
   this.getAllCandidates = function(callback) {
@@ -33,7 +33,6 @@ angular.module('Roundup')
     });
   }
 }])
-
 .service('QuestionService', ['$http', function($http) {
   this.getAllQuestions = function(callback) {
     $http({
@@ -58,4 +57,3 @@ angular.module('Roundup')
   }
 
 }]);
-
