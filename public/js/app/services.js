@@ -20,4 +20,18 @@ angular.module('Roundup')
     });
   }
 
+}])
+
+.service('QuestionService', ['$http', function($http) {
+  this.getAllQuestions = function(callback) {
+    $http({
+      url: '/api/questions',
+      method: 'GET'
+    }).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
 }]);
