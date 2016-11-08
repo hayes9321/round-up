@@ -1,33 +1,36 @@
-(function(){
-  angular.module('Roundup')
-  .component('userSignupForm', {
-    templateUrl: 'js/app/components/userSignupForm/userSignupForm.html',
-    controller: UserSignupForm
-    //controllerAs: 'userForm'
-  });
+(function(){ 
+	angular.module('Roundup')
+	.component('userSignupForm', {
+		templateUrl: 'js/app/components/userSignupForm/userSignupForm.html',
+		controller: UserSignupForm,
+		controllerAs: 'userSignupForm'
+	});
 
-  function UserSignupForm($state, UserService){
-    console.log('you have made it');
-    // var userForm = this;
-    // userForm.users = [];
-    // userForm.newUser = {
-    //  firstName: '',
-    //  lastName: '',
-    //  title: '',
-    //  email: '',
-    //  password: ''
-    //}
+	//create a new user object to be sent to the DB
+	function UserSignupForm($state, UserService){
+		var userSignupForm = this;
+		userSignupForm.users = [];
+		userSignupForm.newUser = {
+			firstName: '',
+			lastName: '',
+			title: '',
+			email: '',
+			password: ''
+		};
 
-    // userForm.submitUser = function(){
-        
-    //  UserService.addUser(userForm.newUser, function(res) {
-    //    UserService.getAllUsers(function(data) {
-    //       userForm.users = data.data;
-    //      $state.go('home', {}, {reload : true});
-    //    });
-    //  });
-    // }
-  }
-
-  UserSignupForm.$inject = ['$state','UserService'];  
+		//send the new object to services
+		userSignupForm.submitUser = function(){
+			UserService.addUser(userSignupForm.newUser, function(data) {
+	      UserService.getAllUsers(function(data) {
+	        userSignupForm.users = data.data;
+	        //$state.go('home', {}, {reload : true});
+	        console.log(userSignupForm.users);
+	      });
+	    });
+      
+	  }
+	}
+ 	// console.log(userSignupForm.users);
+	UserSignupForm.$inject = ['$state','UserService'];
 })()
+
