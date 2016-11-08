@@ -1,12 +1,12 @@
 (function(){
 	angular.module('Roundup')
-	.component('userForm', {
-		templateUrl: 'js/app/components/userForm/userForm.html',
-		controller: UserForm
+	.component('userSignupForm', {
+		templateUrl: 'js/app/components/userSignupForm/userSignupForm.html',
+		controller: UserSignupForm
 		//controllerAs: 'userForm'
 	});
 
-	function UserForm($state, UserService){
+	function UserSignupForm($state, UserService){
 		console.log('you have made it');
 		// var userForm = this;
 		// userForm.users = [];
@@ -29,5 +29,5 @@
 	 //  }
 	}
  
-	UserForm.$inject = ['$state','UserService'];
+	UserSignupForm.$inject = ['$state','UserService'];
 })()
