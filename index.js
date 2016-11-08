@@ -26,6 +26,7 @@ app.use('/api/users', require('./controllers/users'), expressJWT({secret: secret
 =======
 // app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}));
 app.use('/api/users', require('./controllers/users'));
+app.use('/api/candidates', require('./controllers/candidates'));
 app.use('/api/questions', require('./controllers/questions'));
 >>>>>>> f2ee58954fca69ac41d70fee535df70ff5505add
 
