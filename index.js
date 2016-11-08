@@ -21,6 +21,7 @@ app.use('/api/auth', require('./controllers/auth'));
 // app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}));
 app.use('/api/users', require('./controllers/users'));
 app.use('/api/candidates', require('./controllers/candidates'));
+app.use('/api/questions', require('./controllers/questions'));
 
 app.use(function (err, req, res, next) {
   // send an appropriate status code & JSON object saying there was an error, if there was one.
