@@ -25,6 +25,10 @@ angular.module('Roundup', ['ui.router'])
     url: '/review',
     templateUrl: 'js/app/views/roundReview.html',
   })
+  .state('users', {
+    url: '/users',
+    templateUrl: 'js/app/views/users.html'
+  })
   .state('modal', {
     url: '/modal',
     templateUrl: 'js/app/views/modal.html',
