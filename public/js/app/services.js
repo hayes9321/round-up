@@ -21,6 +21,10 @@ angular.module('Roundup')
   }
 
 }])
+.service('CandidateService', ['$http', function($http) {
+  this.getAllCandidates = function(callback) {
+    $http({
+      url: '/api/candidates',
 
 .service('QuestionService', ['$http', function($http) {
   this.getAllQuestions = function(callback) {
@@ -46,3 +50,4 @@ angular.module('Roundup')
   }
 
 }]);
+
