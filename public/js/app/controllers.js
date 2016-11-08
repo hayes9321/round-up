@@ -3,6 +3,5 @@ angular.module('Roundup')
   $scope.user = {};
   $scope.candidate = {};
   $scope.questions = {};
-
 }]);
 

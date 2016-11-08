@@ -1,14 +1,14 @@
-angular.module('RecipeServices')
+angular.module('Roundup')
 .factory('Auth', ['$window', function($window) {
   return {
     saveToken: function(token) {
-      $window.localStorage['secretrecipes-token'] = token;
+      $window.localStorage['secret-token'] = token;
     },
     getToken: function() {
-      return $window.localStorage['secretrecipes-token'];
+      return $window.localStorage['secret-token'];
     },
     removeToken: function() {
-      $window.localStorage.removeItem('secretrecipes-token');
+      $window.localStorage.removeItem('secret-token');
     },
     isLoggedIn: function() {
       var token = this.getToken();
