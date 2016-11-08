@@ -41,5 +41,15 @@
 	</select>
 </form>
 
+<h3> Select Round </h3>
+<!-- <form>
+	<select>
+		<option selected disabled>Select Round</option>
+		<option ng-repeat="user in users" value="{{user._id}}">{{user.lastName}}, {{user.firstName}} ({{user.title}})</option>
+	</select>
+</form> -->
+
+	<div ng-repeat="round in rounds">{{round}}</div>
+
 
 </div>

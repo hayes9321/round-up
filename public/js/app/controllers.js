@@ -6,10 +6,11 @@ angular.module('Roundup')
 
 }])
 
-.controller('RoundCtrl', ['$scope', '$state', 'QuestionService', 'CandidateService', 'UserService', function($scope, $state, QuestionService, CandidateService, UserService) {
+.controller('RoundCtrl', ['$scope', '$state', 'QuestionService', 'CandidateService', 'UserService', 'RoundService', function($scope, $state, QuestionService, CandidateService, UserService, RoundService) {
   $scope.questions = {};
   $scope.candidates = {};
   $scope.users = {};
+  $scope.rounds = {};
 
 	QuestionService.getAllQuestions(function(data) {
     $scope.questions = data.data;
@@ -24,6 +25,11 @@ angular.module('Roundup')
   UserService.getAllUsers(function(data) {
     $scope.users = data.data;
     console.log('users in new ctrl: ', $scope.users);
+  });
+
+  RoundService.getAllRounds(function(data) {
+  	$scope.rounds = data.data;
+  	console.log('rounds in new ctrl: ', $scope.rounds);
   });
 
 }]);
