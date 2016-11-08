@@ -20,13 +20,36 @@ angular.module('Roundup')
       console.log(res);
     });
   }
-
 }])
 
-angular.module('Roundup', ['ngResource'])
-.factory('UserService', ['$resource', function($resource) {
-  return $resource('/api/users/:id');
+.service('QuestionService', ['$http', function($http) {
+  this.getAllQuestions = function(callback) {
+    $http({
+      url: '/api/questions',
+      method: 'GET'
+    }).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
+  this.addQuestion = function(questionData, callback) {
+    console.log('question data: ', questionData);
+    $http.post('/api/questions', questionData).then(function success(res) {
+      console.log('success api question');
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+      console.log('addQuestion error');
+    });
+  }
+
 }])
+// angular.module('Roundup', ['ngResource'])
+// .factory('UserService', ['$resource', function($resource) {
+//   return $resource('/api/users/:id');
+// }])
 
 .factory('Auth', ['$window', function($window) {
   return {
@@ -93,4 +116,4 @@ angular.module('Roundup', ['ngResource'])
       return config;
     }
   }
-}])
+}]);

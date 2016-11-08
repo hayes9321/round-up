@@ -18,10 +18,16 @@ app.use(require('morgan')('dev'));
 
 
 app.use('/api/auth', require('./controllers/auth'));
+<<<<<<< HEAD
 app.use('/api/users', require('./controllers/users'), expressJWT({secret: secret}).unless({method: 'POST'}));
 
 //app.use('/api/users', require('./controllers/users'));
 
+=======
+// app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}));
+app.use('/api/users', require('./controllers/users'));
+app.use('/api/questions', require('./controllers/questions'));
+>>>>>>> f2ee58954fca69ac41d70fee535df70ff5505add
 
 app.use(function (err, req, res, next) {
   // send an appropriate status code & JSON object saying there was an error, if there was one.
