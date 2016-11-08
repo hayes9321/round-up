@@ -12,10 +12,11 @@ angular.module('Roundup')
   }
 
   this.addUser = function(userData, callback) {
-    $http.user('/api/users', userData).then(function success(res) {
+    $http.post('/api/users', userData).then(function success(res) {
       callback(res);
     }, function error(res) {
       console.log(res);
+      console.log('addUser')
     });
   }
 
