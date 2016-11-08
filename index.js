@@ -18,9 +18,9 @@ app.use(require('morgan')('dev'));
 
 
 app.use('/api/auth', require('./controllers/auth'));
-//app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}, require('./controllers/users')));
-// app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}));
-app.use('/api/users', require('./controllers/users'));
+app.use('/api/users', require('./controllers/users'), expressJWT({secret: secret}).unless({method: 'POST'}));
+
+//app.use('/api/users', require('./controllers/users'));
 
 
 app.use(function (err, req, res, next) {

@@ -23,7 +23,7 @@
 			UserService.addUser(userSignupForm.newUser, function(res) {
 	      UserService.getAllUsers(function(data) {
 	        userSignupForm.users = data.data;
-	        //$state.go('home', {}, {reload : true});
+	        $state.go('home', {}, {reload : true});
 	        console.log(userSignupForm.users);
 	      });
 	    });
