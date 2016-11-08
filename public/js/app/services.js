@@ -25,7 +25,14 @@ angular.module('Roundup')
   this.getAllCandidates = function(callback) {
     $http({
       url: '/api/candidates',
+      method: 'GET'
+    }).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
   }
+}])
 .service('QuestionService', ['$http', function($http) {
   this.getAllQuestions = function(callback) {
     $http({
