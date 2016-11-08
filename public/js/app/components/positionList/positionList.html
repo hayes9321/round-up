@@ -1,0 +1,7 @@
+<ul>
+  <li ng-repeat="position in positionList.positions | orderBy: 'jobTitle'">
+    <a href="positions/{{position._id}}">
+      {{position.jobTitle}}
+    </a>
+  </li>
+</ul>

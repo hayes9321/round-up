@@ -23,6 +23,7 @@ app.use('/api/users', require('./controllers/users'), expressJWT({secret: secret
 app.use('/api/users', require('./controllers/users'));
 app.use('/api/candidates', require('./controllers/candidates'));
 app.use('/api/questions', require('./controllers/questions'));
+app.use('/api/positions', require('./controllers/positions'));
 
 app.use(function (err, req, res, next) {
   // send an appropriate status code & JSON object saying there was an error, if there was one.

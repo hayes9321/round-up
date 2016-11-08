@@ -36,6 +36,10 @@ angular.module('Roundup', ['ui.router'])
   .state('modal', {
     url: '/modal',
     templateUrl: 'js/app/views/modal.html',
+  })
+  .state('positions',{
+    url: '/positions',
+    templateUrl: 'js/app/views/positions.html'
   });
 
 	$locationProvider.html5Mode(true);

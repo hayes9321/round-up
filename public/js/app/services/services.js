@@ -55,5 +55,27 @@ angular.module('Roundup')
       console.log('addQuestion error');
     });
   }
+}])
+.service('PositionService', ['$http', function($http) {
+  this.getAllPositions = function(callback) {
+    $http({
+      url: '/api/positions',
+      method: 'GET'
+    }).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
 
+  this.addPosition = function(positionData, callback) {
+    console.log('position data: ', positionData);
+    $http.post('/api/positions', positionData).then(function success(res) {
+      console.log('add new position');
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+      console.log('add new position error');
+    });
+  }
 }]);
