@@ -9,18 +9,18 @@ angular.module('Roundup', ['ui.router'])
 		// controller: 'HomeCtrl'
 	})
 	.state('candidates', {
-    	url: '/candidates',
-    	templateUrl: 'js/app/views/candidates.html',
-    // controller: ''
-  	})
-  	.state('signup', {
-    	url: '/signup',
-    	templateUrl: 'js/app/views/signup.html',
-  	})
-  	.state('interview', {
-    	url: '/interview',
-    	templateUrl: 'js/app/views/interview.html',
-  	});
+  	url: '/candidates',
+  	templateUrl: 'js/app/views/candidates.html',
+  // controller: ''
+	})
+	.state('signup', {
+  	url: '/signup',
+  	templateUrl: 'js/app/views/signup.html',
+	})
+	.state('interview', {
+  	url: '/interview',
+  	templateUrl: 'js/app/views/interview.html',
+	});
 
 	$locationProvider.html5Mode(true);
 
