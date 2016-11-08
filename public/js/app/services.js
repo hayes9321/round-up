@@ -34,4 +34,15 @@ angular.module('Roundup')
     });
   }
 
+  this.addQuestion = function(questionData, callback) {
+    console.log('question data: ', questionData);
+    $http.post('/api/questions', questionData).then(function success(res) {
+      console.log('success api question');
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+      console.log('addQuestion error');
+    });
+  }
+
 }]);

@@ -13,5 +13,13 @@ router.get('/', function(req, res) {
   });
 });
 
+router.post('/', function(req, res) {
+  var question = new Question(req.body);
+  question.save(function(err) {
+    if (err) return res.send({message: 'An error occurred when creating a question'});
+    res.send(question);
+  });
+});
+
 
 module.exports = router;

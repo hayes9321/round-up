@@ -6,7 +6,7 @@
     controllerAs: 'questionList'
   });
 
-  function QuestionList(QuestionService) {
+  function QuestionList($state, QuestionService) {
     var questionList = this;
     questionList.questions = [];
 
@@ -15,5 +15,5 @@
     });
   }
 
-  QuestionList.$inject = ['QuestionService'];
+  QuestionList.$inject = ['$state', 'QuestionService'];
 })()
