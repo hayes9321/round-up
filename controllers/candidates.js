@@ -11,6 +11,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
+  console.log('new candidate req.body: ', req.body)
   var candidate = new Candidate(req.body);
   candidate.save(function(err) {
     if (err) return res.send({message: 'An error occurred when creating a candidate'});

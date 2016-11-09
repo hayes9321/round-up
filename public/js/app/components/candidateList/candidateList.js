@@ -7,13 +7,11 @@
   });
 
   function CandidateList(CandidateService) {
-    console.log("in candidate list");
     var candidateList = this;
     candidateList.candidates = [];
 
     CandidateService.getAllCandidates(function(data) {
       candidateList.candidates = data.data;
-      console.log("data for candidates: ", data.data);
     });
   }
 

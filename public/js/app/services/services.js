@@ -36,11 +36,11 @@ angular.module('Roundup')
   this.addCandidate = function(candidateData, callback) {
     console.log('candidate data: ', candidateData);
     $http.post('/api/candidates', candidateData).then(function success(res) {
-      console.log('successfully accessed api candidate');
+      console.log('successfully accessed api candidate', res);
       callback(res);
     }, function error(res) {
       console.log(res);
-      console.log('add Candidate error');
+      console.log('Add Candidate error');
     });
   }
 }])
