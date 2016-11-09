@@ -76,6 +76,36 @@ angular.module('Roundup')
     }, function error(res) {
       console.log(res);
       console.log('add new position error');
+
+}])
+.service('RoundService', ['$http', function($http) {
+  this.getAllRounds = function(callback) {
+    $http({
+      url: '/api/rounds',
+      method: 'GET'
+    }).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
+  this.getRound = function(id, callback) {
+    $http.get('/api/rounds/' + id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
+  this.addRound = function(roundData, callback) {
+    console.log('round data: ', roundData);
+    $http.post('/api/rounds', roundData).then(function success(res) {
+      console.log('success api rounds');
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+      console.log('addRound error');
     });
   }
 }]);
