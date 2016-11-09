@@ -14,7 +14,7 @@
     QuestionService.getAllQuestions(function(data) {
       questionList.questions = data.data;
       console.log('data.data: ', data.data);
-      console.log('questionList.questtions: ', questionList.questions);
+      console.log('questionList.questions: ', questionList.questions);
     });
   }
 

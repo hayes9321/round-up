@@ -69,9 +69,17 @@ angular.module('Roundup')
     });
   }
 
+  this.getRound = function(id, callback) {
+    $http.get('/api/rounds/' + id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
   this.addRound = function(roundData, callback) {
     console.log('round data: ', roundData);
-    $http.post('/api/rounds', questionData).then(function success(res) {
+    $http.post('/api/rounds', roundData).then(function success(res) {
       console.log('success api rounds');
       callback(res);
     }, function error(res) {
