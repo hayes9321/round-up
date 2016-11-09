@@ -31,11 +31,25 @@ angular.module('Roundup', ['ui.router'])
   })
   .state('questions', {
     url: '/questions',
-    templateUrl: 'js/app/views/questions.html'
+    templateUrl: 'js/app/views/questions.html',
+  })
+  .state('createRound', {
+    url: '/create-round',
+    templateUrl: 'js/app/views/createRound.html',
+    controller: 'RoundCtrl'
+  })
+  .state('editRound', {
+    url: '/round/:id',
+    templateUrl: 'js/app/views/editRound.html',
+    controller: 'RoundCtrl'
   })
   .state('modal', {
     url: '/modal',
     templateUrl: 'js/app/views/modal.html',
+  })
+  .state('positions',{
+    url: '/positions',
+    templateUrl: 'js/app/views/positions.html'
   });
 
 	$locationProvider.html5Mode(true);

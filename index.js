@@ -21,6 +21,9 @@ app.use('/api/auth', expressJWT({secret: secret}).unless({method: 'POST'}), requ
 app.use('/api/users',  expressJWT({secret: secret}).unless({method: 'POST'}), require('./controllers/users'));
 app.use('/api/candidates', expressJWT({secret: secret}), require('./controllers/candidates'));
 app.use('/api/questions', expressJWT({secret: secret}), require('./controllers/questions'));
+app.use('/api/positions', expressJWT({secret: secret}), require('./controllers/positions'));
+app.use('/api/rounds', expressJWT({secret: secret}), require('./controllers/rounds'));
+
 
 
 app.use(function (err, req, res, next) {

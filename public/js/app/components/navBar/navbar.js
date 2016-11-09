@@ -6,6 +6,7 @@
     controllerAs: 'navBar'
   });
 
+
   function NavBar($http, $state, $location, Auth, Alerts) {
     var navBar = this;
     navBar.Auth = Auth;
