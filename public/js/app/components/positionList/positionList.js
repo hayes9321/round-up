@@ -7,7 +7,6 @@
   });
 
   function PositionList(PositionService) {
-    console.log("in position list");
     var positionList = this;
     positionList.positions = [];
 

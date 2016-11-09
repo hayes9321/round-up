@@ -6,32 +6,62 @@
     controllerAs: 'newPositionForm'
   });
 
-  function NewPositionForm($state, PositionService, QuestionService) {
+  function NewPositionForm($state, $scope, PositionService, QuestionService) {
     var newPositionForm = this;
     newPositionForm.positions = [];
     newPositionForm.questions = [];
+    newPositionForm.q1 = '';
+    newPositionForm.q2 = '';
+    newPositionForm.q3 = '';
+    newPositionForm.q4 = '';
+    newPositionForm.q5 = '';
     newPositionForm.newPosition = {
       jobTitle: '',
       description: '',
       questions: []
     };
 
+    $scope.$watch('q1', function(newVal, oldVal){
+      if (newVal && newVal.question){
+      newPositionForm.newPosition.questions.push(newVal._id);
+      }
+    });
+
+    $scope.$watch('q2', function(newVal, oldVal){
+      if (newVal && newVal.question){
+      newPositionForm.newPosition.questions.push(newVal._id);
+      }
+    });
+    $scope.$watch('q3', function(newVal, oldVal){
+      if (newVal && newVal.question){
+      newPositionForm.newPosition.questions.push(newVal._id);
+      }
+    });
+    $scope.$watch('q4', function(newVal, oldVal){
+      if (newVal && newVal.question){
+      newPositionForm.newPosition.questions.push(newVal._id);
+      }
+    });
+    $scope.$watch('q5', function(newVal, oldVal){
+      if (newVal && newVal.question){
+      newPositionForm.newPosition.questions.push(newVal._id);
+      }
+    });
+
     QuestionService.getAllQuestions(function(data) {
       newPositionForm.questions = data.data;
-      console.log("data.data", data.data)
     });
 
   newPositionForm.submitPosition = function() {
     PositionService.addPosition(newPositionForm.newPosition, function(data) {
       PositionService.getAllPositions(function(data) {
         newPositionForm.positions = data.data;
-        console.log('position form: ', newPositionForm.positions);
       });
     });
   }
 }
 
-NewPositionForm.$inject = ['$state', 'PositionService', 'QuestionService'];
+NewPositionForm.$inject = ['$state', '$scope', 'PositionService', 'QuestionService'];
 
 })()
 
