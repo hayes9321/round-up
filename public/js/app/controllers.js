@@ -1,5 +1,5 @@
 angular.module('Roundup')
-.controller('HomeCtrl', ['$scope', '$state', 'UserService', 'CandidateService', 'QuestionService', function($scope, $state, UserService, CandidateService, QuestionService) {
+.controller('HomeCtrl', ['$scope', '$state', 'UserService', 'CandidateService', 'QuestionService', 'PositionService', function($scope, $state, UserService, CandidateService, QuestionService, PositionService) {
   $scope.user = {};
   $scope.candidate = {};
   //$scope.questions = {};
@@ -37,6 +37,7 @@ angular.module('Roundup')
 
 .controller('EditRoundCtrl', ['$scope', '$stateParams', '$state', 'QuestionService', 'CandidateService', 'UserService', 'RoundService', function($scope, $stateParams, $state, QuestionService, CandidateService, UserService, RoundService) {
   $scope.questions = {};
+  $scope.positions = {};
   $scope.candidates = {};
   $scope.users = {};
   $scope.rounds = {};
@@ -65,7 +66,6 @@ angular.module('Roundup')
   RoundService.getRound(id, function(res) {
   	$scope.round = res.data
   });
-
 
 }]);
 

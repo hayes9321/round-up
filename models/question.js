@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var questionSchema = new mongoose.Schema({
-  simpleId: Number,
-  question: String
+  simpleId: { type: Number, required: true, unique: true },
+  question: { type: String, required: true, unique: true }
 });
 
 var Question = mongoose.model('Question', questionSchema);
