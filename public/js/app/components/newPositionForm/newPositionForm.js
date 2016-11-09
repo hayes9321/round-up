@@ -56,6 +56,7 @@
     PositionService.addPosition(newPositionForm.newPosition, function(data) {
       PositionService.getAllPositions(function(data) {
         newPositionForm.positions = data.data;
+          $state.go('positions', {}, {reload : true});
       });
     });
   }

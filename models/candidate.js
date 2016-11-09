@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var candidateSchema = new mongoose.Schema({
-  fistName: { type: String, required: true },
+  firstName: { type: String, required: true },
   lastName: { type: String, required: true }
 });
 

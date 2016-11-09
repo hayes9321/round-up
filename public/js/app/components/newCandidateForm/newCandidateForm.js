@@ -18,7 +18,6 @@
     CandidateService.addCandidate(newCandidateForm.newCandidate, function(data) {
       CandidateService.getAllCandidates(function(data) {
         newCandidateForm.candidates = data.data;
-        console.log("new candidate data: ", data.data);
           $state.go('candidates', {}, {reload : true});
       });
     });
