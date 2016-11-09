@@ -1,18 +1,20 @@
-angular.module('RecipeServices')
+angular.module('Roundup')
 .factory('Auth', ['$window', function($window) {
   return {
     saveToken: function(token) {
-      $window.localStorage['secretrecipes-token'] = token;
+      $window.localStorage['secret-token'] = token;
     },
     getToken: function() {
-      return $window.localStorage['secretrecipes-token'];
+      return $window.localStorage['secret-token'];
     },
     removeToken: function() {
-      $window.localStorage.removeItem('secretrecipes-token');
+      $window.localStorage.removeItem('secret-token');
     },
     isLoggedIn: function() {
       var token = this.getToken();
-      return token ? true : false;
+      var result = token ? true : false;
+      console.log("is logged in?", result);
+      return result;
     },
     currentUser: function() {
       if (this.isLoggedIn()) {
@@ -49,9 +51,6 @@ angular.module('RecipeServices')
 
 .factory('AuthInterceptor', ['Auth', function(Auth) {
   // if querying other APIs, add URLs to this array
-  var excludedEndpoints = [
-    'https://swapi.co/api/films'
-  ];
 
   return {
     request: function(config) {
