@@ -13,7 +13,7 @@ angular.module('Roundup')
     isLoggedIn: function() {
       var token = this.getToken();
       var result = token ? true : false;
-      console.log("is logged in?", result);
+      // console.log("is logged in?", result);
       return result;
     },
     currentUser: function() {

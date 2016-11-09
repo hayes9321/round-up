@@ -24,14 +24,12 @@ app.use(require('morgan')('dev'));
 // app.use('/api/positions', expressJWT({secret: secret}), require('./controllers/positions'));
 // app.use('/api/rounds', expressJWT({secret: secret}), require('./controllers/rounds'));
 
-
 app.use('/api/auth', require('./controllers/auth'));
 app.use('/api/users', require('./controllers/users'));
 app.use('/api/candidates', require('./controllers/candidates'));
 app.use('/api/questions', require('./controllers/questions'));
 app.use('/api/positions', require('./controllers/positions'));
 app.use('/api/rounds', require('./controllers/rounds'));
-
 
 
 app.use(function (err, req, res, next) {
