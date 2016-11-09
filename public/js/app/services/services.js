@@ -32,6 +32,17 @@ angular.module('Roundup')
       console.log(res);
     });
   }
+
+  this.addCandidate = function(candidateData, callback) {
+    console.log('candidate data: ', candidateData);
+    $http.post('/api/candidates', candidateData).then(function success(res) {
+      console.log('successfully accessed api candidate', res);
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+      console.log('Add Candidate error');
+    });
+  }
 }])
 .service('QuestionService', ['$http', function($http) {
   this.getAllQuestions = function(callback) {
@@ -52,7 +63,7 @@ angular.module('Roundup')
       callback(res);
     }, function error(res) {
       console.log(res);
-      console.log('addQuestion error');
+      console.log('add Question error');
     });
   }
 }])
@@ -76,7 +87,8 @@ angular.module('Roundup')
     }, function error(res) {
       console.log(res);
       console.log('add new position error');
-
+    });
+  }
 }])
 .service('RoundService', ['$http', function($http) {
   this.getAllRounds = function(callback) {

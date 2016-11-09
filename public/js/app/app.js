@@ -6,12 +6,10 @@ angular.module('Roundup', ['ui.router'])
 	.state('home', {
 		url: '/',
 		templateUrl: 'js/app/views/home.html',
-		// controller: 'HomeCtrl'
 	})
 	.state('candidates', {
   	url: '/candidates',
   	templateUrl: 'js/app/views/candidates.html',
-  // controller: ''
 	})
 	.state('signup', {
   	url: '/signup',

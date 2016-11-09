@@ -2,12 +2,29 @@
   angular.module('Roundup')
   .component('newCandidateForm', {
     templateUrl: 'js/app/components/newCandidateForm/newCandidateForm.html',
-    controller: newCandidateForm,
+    controller: NewCandidateForm,
     controllerAs: 'newCandidateForm'
   });
 
-  function newCandidateForm() {
+  function NewCandidateForm($state, CandidateService) {
     var newCandidateForm = this;
-    console.log('newCandidateForm firing');
+    newCandidateForm.candidates = [];
+    newCandidateForm.newCandidate = {
+      firstName: '',
+      lastName: ''
+    };
+
+  newCandidateForm.submitCandidate = function() {
+    CandidateService.addCandidate(newCandidateForm.newCandidate, function(data) {
+      CandidateService.getAllCandidates(function(data) {
+        newCandidateForm.candidates = data.data;
+        console.log("new candidate data: ", data.data);
+          $state.go('candidates', {}, {reload : true});
+      });
+    });
   }
-})();
+}
+
+NewCandidateForm.$inject = ['$state', 'CandidateService'];
+
+})()
