@@ -76,7 +76,8 @@ angular.module('Roundup')
     }, function error(res) {
       console.log(res);
       console.log('add new position error');
-
+    });
+  }
 }])
 .service('RoundService', ['$http', function($http) {
   this.getAllRounds = function(callback) {
