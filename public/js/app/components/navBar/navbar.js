@@ -7,12 +7,14 @@
   });
 
   function NavBar($http, $state, $location, Auth, Alerts) {
-    var navbar = this;
-    navbar.Auth = Auth;
+    var navBar = this;
+    navBar.Auth = Auth;
     console.log("this is Auth",  Auth)
 
-    navbar.logout = function() {
+    navBar.logout = function() {
+    console.log('clicked');
     Auth.removeToken();
+    console.log('My token:', Auth.getToken());
     Alerts.add('success', 'Logged out!');
     $state.reload();
   	}

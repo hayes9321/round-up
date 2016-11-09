@@ -12,7 +12,9 @@ angular.module('Roundup')
     },
     isLoggedIn: function() {
       var token = this.getToken();
-      return token ? true : false;
+      var result = token ? true : false;
+      console.log("is logged in?", result);
+      return result;
     },
     currentUser: function() {
       if (this.isLoggedIn()) {
@@ -49,9 +51,6 @@ angular.module('Roundup')
 
 .factory('AuthInterceptor', ['Auth', function(Auth) {
   // if querying other APIs, add URLs to this array
-  var excludedEndpoints = [
-    'https://swapi.co/api/films'
-  ];
 
   return {
     request: function(config) {

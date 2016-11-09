@@ -9,6 +9,8 @@
   function UserLoginForm($http, $state, $location, Auth, Alerts){
     console.log('you have made it');
     var userLoginForm = this;
+
+    
     
     userLoginForm.user = {
      email: '',

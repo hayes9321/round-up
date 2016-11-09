@@ -11,11 +11,12 @@
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signup" ng-hide="Auth.isLoggedIn()">Signup</a></li>
-        <li><a href="/candidates" ng-hide="Auth.isLoggedIn()">View All Candidates</a></li>
-        <li><a href="/candidates/new" ng-hide="Auth.isLoggedIn()">Create New Candidate</a></li>
-        <li><a href="/interview" ng-hide="Auth.isLoggedIn()">Interview Candidate</a></li>
-        <li><a ng-click="navBar.logout()" ng-hide="Auth.isLoggedIn()">Logout</a></li>
+        <li>logged in: {{navBar.Auth.isLoggedIn()}}</li>
+        <li><a href="/signup" ng-show="navBar.Auth.isLoggedIn()">Signup</a></li>
+        <li><a href="/candidates" ng-show="navBar.Auth.isLoggedIn()">View All Candidates</a></li>
+        <li><a href="/candidates/new" ng-show="navBar.Auth.isLoggedIn()">Create New Candidate</a></li>
+        <li><a href="/interview" ng-show="navBar.Auth.isLoggedIn()">Interview Candidate</a></li>
+        <li><a ng-click="navBar.logout()" ng-show="navBar.Auth.isLoggedIn()">Logout</a></li>
       </ul>
     </div>
   </div>
