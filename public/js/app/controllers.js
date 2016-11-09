@@ -40,7 +40,11 @@ angular.module('Roundup')
   $scope.positions = {};
   $scope.candidates = {};
   $scope.users = {};
-  $scope.rounds = {};
+  $scope.round = {
+    // _id: '',
+    candidateId: '',
+    positionId: ''
+  };
 
 	QuestionService.getAllQuestions(function(data) {
     $scope.questions = data.data;
@@ -57,14 +61,14 @@ angular.module('Roundup')
     console.log('users in new ctrl: ', $scope.users);
   });
 
-  RoundService.getAllRounds(function(data) {
-  	$scope.rounds = data.data;
-  	console.log('rounds in new ctrl: ', $scope.rounds);
-  });
+  // RoundService.getAllRounds(function(data) {
+  // 	$scope.rounds = data.data;
+  // 	console.log('rounds in new ctrl: ', $scope.rounds);
+  // });
 
   var id = $stateParams.id;
   RoundService.getRound(id, function(res) {
-  	$scope.round = res.data
+  	$scope.round = res.data;
   });
 
 }]);

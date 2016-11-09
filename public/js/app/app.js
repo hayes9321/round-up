@@ -41,7 +41,7 @@ angular.module('Roundup', ['ui.router'])
   .state('editRound', {
     url: '/round/:id',
     templateUrl: 'js/app/views/editRound.html',
-    controller: 'RoundCtrl'
+    controller: 'EditRoundCtrl'
   })
   .state('modal', {
     url: '/modal',

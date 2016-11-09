@@ -76,9 +76,13 @@ angular.module('Roundup')
     }, function error(res) {
       console.log(res);
       console.log('add new position error');
+    });
+  }
 
 }])
 .service('RoundService', ['$http', function($http) {
+
+  //Get all rounds
   this.getAllRounds = function(callback) {
     $http({
       url: '/api/rounds',
@@ -90,14 +94,18 @@ angular.module('Roundup')
     });
   }
 
+  //Get specific round
   this.getRound = function(id, callback) {
+    console.log('get round service firing');
     $http.get('/api/rounds/' + id).then(function success(res) {
+      console.log('get round service res: ',res);
       callback(res);
     }, function error(res) {
       console.log(res);
     });
   }
 
+  //Create new round
   this.addRound = function(roundData, callback) {
     console.log('round data: ', roundData);
     $http.post('/api/rounds', roundData).then(function success(res) {
