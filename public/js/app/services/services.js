@@ -90,6 +90,7 @@ angular.module('Roundup')
     });
   }
 }])
+
 .service('RoundService', ['$http', function($http) {
 
   //Get all rounds
@@ -121,9 +122,39 @@ angular.module('Roundup')
     $http.post('/api/rounds', roundData).then(function success(res) {
       console.log('success api rounds');
       callback(res);
+      console.log('callback res in services, should be data?: ', res);
     }, function error(res) {
       console.log(res);
       console.log('addRound error');
     });
   }
+
+  //edit specific round
+  this.updateRound = function(round, callback) {
+    console.log('updateRound in services.js firing 2?', round);
+    console.log('roundid', round._id);
+    console.log('questions for this round?', round.questions);
+    $http.put('/api/rounds/' + round._id).then(function success(res) {
+      console.log('edit round callback res', res);
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
+
+  // post new question to existing round?
+  this.addQuestionToRound = function(questionData, roundId, callback) {
+    console.log('updateRound in services.js firing - questionData: ', questionData);
+    console.log('updateRound in services.js firing - roundId: ', roundId);
+    console.log('question data in services: ', questionData);
+
+    $http.put('/api/rounds/' + roundId + '/questions', questionData).then(function success(res) {
+      console.log('edit round callback res');
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
 }]);

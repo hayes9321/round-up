@@ -31,6 +31,11 @@ angular.module('Roundup', ['ui.router'])
     url: '/questions',
     templateUrl: 'js/app/views/questions.html',
   })
+  .state('rounds', {
+    url: '/rounds',
+    templateUrl: 'js/app/views/rounds.html',
+    controller: 'RoundCtrl'
+  })
   .state('createRound', {
     url: '/create-round',
     templateUrl: 'js/app/views/createRound.html',

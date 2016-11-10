@@ -14,7 +14,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
+  console.log('in router.post');
   var round = new Round(req.body);
+  console.log('rounds controller, req.body: ', round);
   round.save(function(err) {
     if (err) return res.send({message: 'An error occurred when creating a question'});
     res.send(round);
@@ -46,13 +48,31 @@ router.post('/', function(req, res) {
 // router.get('/round/:id', function(req, res) {
 router.route('/:id')
   .get(function(req, res) {
+    console.log('in round get route');
     Round.findById(req.params.id, function(err, round) {
       if (err) return res.status(500).send(err);
       return res.send(round);
     });
   })
-  .put(function(req, res) {
-    Round.findByIdAndUpdate(req.params.id, req.body, function(err) {
+  // .put(function(req, res) {
+  //   console.log('put route firing');
+  //   console.log('round/question put route firing, req.params.id:', req.params.id);
+  //   console.log('round/question put route firing, req.body:', req.body);
+
+  //   //console.log('round/question put route firing, res:', res);
+
+  //   Round.findByIdAndUpdate(req.params.id, req.body, function(err) {
+  //     if (err) return res.status(500).send(err);
+  //     console.log('in success');
+  //     return res.send({ message: 'success' });
+  //   });
+  // })
+  .post(function(req, res) {
+    console.log('post route firing');
+    console.log('round/question put route firing, req:', req);
+    //console.log('round/question put route firing, res:', res);
+
+    Round.findByIdAndUpdate(req.params.id, function(err) {
       if (err) return res.status(500).send(err);
       return res.send({ message: 'success' });
     });
@@ -65,7 +85,40 @@ router.route('/:id')
   });
 
 
+router.route('/:id/questions')
+  .get(function(req, res) {
+    console.log('in round get route');
+    Round.findById(req.params.id, function(err, round) {
+      if (err) return res.status(500).send(err);
+      return res.send(round.questions);
+    });
+  })
+  .put(function(req, res) {
+    console.log('in round questions get route');
+    console.log('req.body: ', req.body);
+    console.log('Round? ', Round);
+    console.log('new req.params: ', req.params);
+    // Round.findByIdAndUpdate(req.params.id, req.body, function(err) {
+      Round.findOneAndUpdate({ _id: req.params.id }, {$set:{questions:req.body}}, function(err) {
+      if (err) return res.status(500).send(err);
+      console.log('in success');
+      return res.send({ message: 'success' });
+    });
+  });
 
+
+  // .put(function(req, res) {
+  //   console.log('put route firing');
+  //   console.log('round/question put route firing, req.params.id:', req.params.id);
+  //   console.log('round/question put route firing, req.body:', req.body);
+
+  //   //console.log('round/question put route firing, res:', res);
+
+  //   Round.findByIdAndUpdate(req.params.id, req.body, function(err) {
+  //     if (err) return res.status(500).send(err);
+  //     console.log('in success');
+  //     return res.send({ message: 'success' });
+  //   });
 
 
 module.exports = router;
