@@ -2,7 +2,7 @@ var express = require('express');
 var Round = require('../models/round');
 var router = express.Router();
 
-//Find rounds
+// ALL ROUNDS
 router.get('/', function(req, res) {
   console.log('in round controller');
   Round.find(function(err, rounds) {
@@ -23,29 +23,7 @@ router.post('/', function(req, res) {
   });
 });
 
-// router.route('/:id')
-//   .get(function(req, res) {
-//     Airplane.findById(req.params.id, function(err, airplane) {
-//       if (err) return res.status(500).send(err);
-//       return res.send(airplane);
-//     });
-//   })
-//   .put(function(req, res) {
-//     Airplane.findByIdAndUpdate(req.params.id, req.body, function(err) {
-//       if (err) return res.status(500).send(err);
-//       return res.send({ message: 'success' });
-//     });
-//   })
-//   .delete(function(req, res) {
-//     Airplane.findByIdAndRemove(req.params.id, function(err) {
-//       if (err) return res.status(500).send(err);
-//       return res.send({ message: 'success' });
-//     });
-//   });
-
-
-
-// router.get('/round/:id', function(req, res) {
+// SPECIFIC ROUND
 router.route('/:id')
   .get(function(req, res) {
     console.log('in round get route');
@@ -94,31 +72,13 @@ router.route('/:id/questions')
     });
   })
   .put(function(req, res) {
-    console.log('in round questions get route');
-    console.log('req.body: ', req.body);
-    console.log('Round? ', Round);
-    console.log('new req.params: ', req.params);
-    // Round.findByIdAndUpdate(req.params.id, req.body, function(err) {
-      Round.findOneAndUpdate({ _id: req.params.id }, {$set:{questions:req.body}}, function(err) {
+    Round.findOneAndUpdate({ _id: req.params.id }, {$set:{questions:req.body}}, function(err) {
       if (err) return res.status(500).send(err);
       console.log('in success');
       return res.send({ message: 'success' });
     });
   });
 
-
-  // .put(function(req, res) {
-  //   console.log('put route firing');
-  //   console.log('round/question put route firing, req.params.id:', req.params.id);
-  //   console.log('round/question put route firing, req.body:', req.body);
-
-  //   //console.log('round/question put route firing, res:', res);
-
-  //   Round.findByIdAndUpdate(req.params.id, req.body, function(err) {
-  //     if (err) return res.status(500).send(err);
-  //     console.log('in success');
-  //     return res.send({ message: 'success' });
-  //   });
 
 
 module.exports = router;
