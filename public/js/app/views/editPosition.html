@@ -9,18 +9,16 @@
     Description<br>
     <input class="form-control" type="text" style="width: 95%" style="width: 380px" ng-model="position.description">
     <h5>Default Interview Questions for this position</h5>
-    <input ng-model="position.questions[0]" style="width: 300px">
+    <input class="form-control" ng-model="position.questions[0]" style="width: 95%">
     <br>
-    <select ng-options="q.question for q in question" ng-model="q1" style="font-size: 30px; width: 400px">
-    </select><br>
-    <select ng-options="q.question for q in question" ng-model="q2" style="font-size: 30px; width: 400px">
-    </select><br>
-    <select ng-options="q.question for q in question" ng-model="q3" style="font-size: 30px; width: 400px">
-    </select><br>
-    <select ng-options="q.question for q in question" ng-model="q4" style="font-size: 30px; width: 400px">
-    </select><br>
-    <select ng-options="q.question for q in question" ng-model="q5" style="font-size: 30px; width: 400px">
-    </select><br>
+    <input class="form-control" ng-model="position.questions[1]" style="width: 95%">
+    <br>
+    <input class="form-control" ng-model="position.questions[2]" style="width: 95%">
+    <br>
+    <input class="form-control" ng-model="position.questions[3]" style="width: 95%">
+    <br>
+    <input class="form-control" ng-model="position.questions[4]" style="width: 95%">
+    <br>
     <input type="submit">
   </form>
 </div>
