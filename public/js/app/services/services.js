@@ -34,13 +34,37 @@ angular.module('Roundup')
   }
 
   this.addCandidate = function(candidateData, callback) {
-    console.log('candidate data: ', candidateData);
     $http.post('/api/candidates', candidateData).then(function success(res) {
       console.log('successfully accessed api candidate', res);
       callback(res);
     }, function error(res) {
       console.log(res);
       console.log('Add Candidate error');
+    });
+  }
+  //show one candidate's details
+  this.getCandidate = function(id, callback) {
+    $http.get('/api/candidates/' + id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
+  //edit one candidate
+  this.updateCandidate = function(candidate, callback) {
+    $http.put('/api/candidates/' + candidate._id, candidate).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+  //delete one candidate
+  this.deleteCandidate = function(candidate, callback) {
+    $http.delete('/api/candidates/' + candidate._id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
     });
   }
 }])
@@ -57,13 +81,35 @@ angular.module('Roundup')
   }
 
   this.addQuestion = function(questionData, callback) {
-    console.log('question data: ', questionData);
     $http.post('/api/questions', questionData).then(function success(res) {
-      console.log('success api question');
+      callback(res);
+    }, function error(res) {
+      console.log('add Question error');
+    });
+  }
+  //show one question's details
+  this.getQuestion = function(id, callback) {
+    $http.get('/api/questions/' + id).then(function success(res) {
       callback(res);
     }, function error(res) {
       console.log(res);
-      console.log('add Question error');
+    });
+  }
+
+  //edit one question
+  this.updateQuestion = function(question, callback) {
+    $http.put('/api/questions/' + question._id, question).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+  //delete one candidate
+  this.deleteQuestion = function(question, callback) {
+    $http.delete('/api/questions/' + question._id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
     });
   }
 }])
@@ -80,17 +126,40 @@ angular.module('Roundup')
   }
 
   this.addPosition = function(positionData, callback) {
-    console.log('position data: ', positionData);
     $http.post('/api/positions', positionData).then(function success(res) {
-      console.log('add new position');
+      callback(res);
+    }, function error(res) {
+    });
+  }
+  //show one position's details
+  this.getPosition = function(id, callback) {
+    $http.get('/api/positions/' + id).then(function success(res) {
       callback(res);
     }, function error(res) {
       console.log(res);
-      console.log('add new position error');
+    });
+  }
+  //edit one position
+  this.updatePosition = function(position, callback) {
+    $http.put('/api/positions/' + position._id, position).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+  //delete one position
+  this.deletePosition = function(position, callback) {
+    $http.delete('/api/positions/' + position._id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
     });
   }
 }])
+
 .service('RoundService', ['$http', function($http) {
+
+  //GET ALL ROUNDS
   this.getAllRounds = function(callback) {
     $http({
       url: '/api/rounds',
@@ -98,10 +167,10 @@ angular.module('Roundup')
     }).then(function success(res) {
       callback(res);
     }, function error(res) {
-      console.log(res);
     });
   }
 
+  //Get specific round
   this.getRound = function(id, callback) {
     $http.get('/api/rounds/' + id).then(function success(res) {
       callback(res);
@@ -110,14 +179,30 @@ angular.module('Roundup')
     });
   }
 
+  // CREATE NEW ROUND
   this.addRound = function(roundData, callback) {
-    console.log('round data: ', roundData);
     $http.post('/api/rounds', roundData).then(function success(res) {
-      console.log('success api rounds');
+      callback(res);
+    }, function error(res) {
+    });
+  }
+
+// EDIT SPECIFIC ROUND - !!(no front end for this yet)
+  this.updateRound = function(round, callback) {
+    $http.put('/api/rounds/' + round._id).then(function success(res) {
       callback(res);
     }, function error(res) {
       console.log(res);
-      console.log('addRound error');
     });
   }
+
+// ADD NEW QUESTION TO EXISTING ROUND
+  this.addQuestionToRound = function(questionData, roundId, callback) {
+    $http.put('/api/rounds/' + roundId + '/questions', questionData).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
 }]);

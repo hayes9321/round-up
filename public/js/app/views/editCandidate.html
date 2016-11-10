@@ -1,0 +1,12 @@
+<h3>Edit Candidate Information</h3>
+
+<a href="/candidates"><span class="glyphicon glyphicon-arrow-left"></span> Back to Candidates</a>
+<br>
+<br>
+  <div style="width: 300px;">
+    <form ng-submit="updateCandidate()">
+      <input type="text" class="form-control" ng-model="candidate.firstName">
+      <input type="text" class="form-control" ng-model="candidate.lastName">
+      <input type="submit">
+    </form>
+  </div>
