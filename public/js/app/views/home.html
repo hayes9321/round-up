@@ -1,4 +1,5 @@
-<div>
+<div ng-controller="AuthCtrl">
+<h1>Hello: {{ currentUser._doc.firstName }}</h1>
   <h1>Home view (not logged in)</h1>
   <h2>Welcome - login or <a ng-href="/signup">sign up</a>!</h2>
   <user-login-form> </user-login-form>

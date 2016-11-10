@@ -70,5 +70,14 @@ angular.module('Roundup')
 }])
 .controller('AlertCtrl', ['$scope', 'Alerts', function($scope, Alerts) {
   $scope.Alerts = Alerts;
+}])
+.controller('AuthCtrl', ['$scope', 'Auth', function($scope, Auth){
+  $scope.currentUser = {}
+  if(Auth.isLoggedIn()){
+    $scope.currentUser = Auth.currentUser();
+    console.log("currentUser" ,$scope.currentUser)
+    console.log("Im logged in")
+  }
+  console.log("current" ,$scope.currentUser)
 }]);
 
