@@ -16,7 +16,6 @@ router.post('/', function(req, res) {
   candidate.save(function(err) {
     if (err) return res.send({message: 'An error occurred when creating a candidate'});
     res.send(candidate);
-    console.log("new candidate: ", candidate);
   });
 });
 
@@ -39,6 +38,7 @@ router.delete('/:id', function(req, res) {
     if (err) return res.status(500).send(err);
     return res.send({ message: 'success' });
   });
+  console.log('here: candidates - ', candidate);
 });
 
 module.exports = router;

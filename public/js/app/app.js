@@ -41,6 +41,11 @@ angular.module('Roundup', ['ui.router'])
     templateUrl: 'js/app/views/editQuestion.html',
     controller: 'EditQuestionCtrl'
   })
+  .state('rounds', {
+    url: '/rounds',
+    templateUrl: 'js/app/views/rounds.html',
+    controller: 'RoundCtrl'
+  })
   .state('createRound', {
     url: '/create-round',
     templateUrl: 'js/app/views/createRound.html',
@@ -49,7 +54,7 @@ angular.module('Roundup', ['ui.router'])
   .state('editRound', {
     url: '/round/:id',
     templateUrl: 'js/app/views/editRound.html',
-    controller: 'RoundCtrl'
+    controller: 'EditRoundCtrl'
   })
   .state('modal', {
     url: '/modal',

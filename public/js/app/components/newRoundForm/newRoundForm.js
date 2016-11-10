@@ -10,17 +10,35 @@
     var newRoundForm = this;
     newRoundForm.rounds = [];
     newRoundForm.newRound = {
-      candidateId: '',
-      positionId: ''
+      candidate: {
+        firstName: '',
+        lastName: ''
+      },
+      position: {
+        title: '',
+        description: ''
+      }
     };
+    // newRoundForm.newRound.candidate = {
+    //   firstName: '',
+    //   lastName: ''
+    // };
+    // newRoundForm.newRound.position = {
+    //   title: '',
+    //   description: ''
+    // };
 
   newRoundForm.submitRound = function() {
+    console.log('component newRoundForm.js, newRoundForm.submitRound() firing');
+    console.log('submitRound data (newRoundForm.newRound) its sending to services: ', newRoundForm.newRound);
     RoundService.addRound(newRoundForm.newRound, function(data) {
-      RoundService.getAllRounds(function(data) {
-        newRoundForm.rounds = data.data;
-        //console.log('here: ', newQuestionForm.questions);
+      console.log('round service firing, data: ', data);
+      // reload page with all rounds
+      // RoundService.getAllRounds(function(data) {
+      //   newRoundForm.rounds = data.data;
+      //   console.log('newRoundForm.candidate: ', newRoundForm.rounds);
         $state.go('createRound', {}, {reload : true});
-      });
+       // });
     });
 
   }
