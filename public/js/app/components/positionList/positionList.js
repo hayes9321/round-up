@@ -8,11 +8,17 @@
 
   function PositionList(PositionService) {
     var positionList = this;
+    positionList.delete = function(position) {
+      PositionService.deletePosition(position, function(res) {
+        positionList.positions = positionList.positions.filter(function(item) {
+          return item !== position;
+        });
+      })
+    }
     positionList.positions = [];
 
     PositionService.getAllPositions(function(data) {
       positionList.positions = data.data;
-      console.log("data for positions: ", data.data);
     });
   }
 

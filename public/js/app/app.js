@@ -36,6 +36,11 @@ angular.module('Roundup', ['ui.router'])
     url: '/questions',
     templateUrl: 'js/app/views/questions.html',
   })
+  .state('editQuestions', {
+    url: '/questions/:id',
+    templateUrl: 'js/app/views/editQuestion.html',
+    controller: 'EditQuestionCtrl'
+  })
   .state('createRound', {
     url: '/create-round',
     templateUrl: 'js/app/views/createRound.html',
@@ -53,6 +58,11 @@ angular.module('Roundup', ['ui.router'])
   .state('positions',{
     url: '/positions',
     templateUrl: 'js/app/views/positions.html'
+  })
+  .state('editPositions',{
+    url: '/positions/:id',
+    templateUrl: 'js/app/views/editPosition.html',
+    controller: 'EditPositionCtrl'
   });
 
 	$locationProvider.html5Mode(true);

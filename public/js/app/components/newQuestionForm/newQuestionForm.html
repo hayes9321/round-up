@@ -1,11 +1,10 @@
+<h3>Create a New Interview Question</h3>
 <div class="component">
-<em>components > newQuestionForm > newQuestionForm.html</em>
-
-<form ng-submit="newQuestionForm.submitQuestion()">
-  <input type="text" placeholder="Enter question" ng-model="newQuestionForm.newQuestion.question">
-  <input type="number" placeholder="Enter simple id" ng-model="newQuestionForm.newQuestion.simpleId">
-  <input type="submit">
-</form>
-
-
+  <form ng-submit="newQuestionForm.submitQuestion()">
+    Question Number (no duplicates)<br>
+    <input class="form-control" style="width: 30px;" type="number" placeholder="#" ng-model="newQuestionForm.newQuestion.simpleId">
+    Question<br>
+    <input class="form-control" style="width: 600px" type="text" placeholder="Enter question" ng-model="newQuestionForm.newQuestion.question"><br>
+    <input type="submit">
+  </form>
 </div>

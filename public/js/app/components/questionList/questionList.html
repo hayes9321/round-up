@@ -1,9 +1,10 @@
 <div class="component">
-<em>components > questionList > questionList.html </em>
-
 	<div ng-repeat="question in questionList.questions">
 		<div class="panel">
 			{{question.simpleId}}. {{question.question}}
+      <br>
+      <a href="/questions/{{question._id}}"><button style="font-size: 13px">Edit</button></a>
+      <button ng-click="questionList.delete(question)" style="font-size: 13px; color: red">Remove</button>
 		</div>
 	</div>
 </div>

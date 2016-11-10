@@ -1,0 +1,27 @@
+<h3>Edit Position</h3>
+
+<a href="/positions"><span class="glyphicon glyphicon-arrow-left"></span> Back to Positions</a>
+<br>
+<div class="component">
+  <form ng-submit="updatePosition()">
+    Job Title<br>
+    <input type="text" ng-model="position.jobTitle">
+    <br><br>
+    Description<br>
+    <input type="text" style="width: 380px" ng-model="position.description">
+    <h5>Default Interview Questions for this position</h5>
+    <input ng-model="position.questions[0]" style="width: 300px">
+    <br>
+    <select ng-options="q.question for q in question" ng-model="q1" style="font-size: 30px">
+    </select><br>
+    <select ng-options="q.question for q in question" ng-model="q2" style="font-size: 30px">
+    </select><br>
+    <select ng-options="q.question for q in question" ng-model="q3" style="font-size: 30px">
+    </select><br>
+    <select ng-options="q.question for q in question" ng-model="q4" style="font-size: 30px">
+    </select><br>
+    <select ng-options="q.question for q in question" ng-model="q5" style="font-size: 30px">
+    </select><br>
+    <input type="submit">
+  </form>
+</div>

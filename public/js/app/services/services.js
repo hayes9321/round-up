@@ -43,7 +43,7 @@ angular.module('Roundup')
       console.log('Add Candidate error');
     });
   }
-  //show one candidates details
+  //show one candidate's details
   this.getCandidate = function(id, callback) {
     $http.get('/api/candidates/' + id).then(function success(res) {
       callback(res);
@@ -91,6 +91,31 @@ angular.module('Roundup')
       console.log('add Question error');
     });
   }
+  //show one question's details
+  this.getQuestion = function(id, callback) {
+    $http.get('/api/questions/' + id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
+  //edit one question
+  this.updateQuestion = function(question, callback) {
+    $http.put('/api/questions/' + question._id, question).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+  //delete one candidate
+  this.deleteQuestion = function(question, callback) {
+    $http.delete('/api/questions/' + question._id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
 }])
 .service('PositionService', ['$http', function($http) {
   this.getAllPositions = function(callback) {
@@ -112,6 +137,30 @@ angular.module('Roundup')
     }, function error(res) {
       console.log(res);
       console.log('add new position error');
+    });
+  }
+  //show one position's details
+  this.getPosition = function(id, callback) {
+    $http.get('/api/positions/' + id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+  //edit one position
+  this.updatePosition = function(position, callback) {
+    $http.put('/api/positions/' + position._id, position).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+  //delete one position
+  this.deletePosition = function(position, callback) {
+    $http.delete('/api/positions/' + position._id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
     });
   }
 }])
