@@ -94,8 +94,8 @@ angular.module('Roundup')
 
   QuestionService.getAllQuestions(function(data) {
     $scope.question = data.data;
-    console.log("got questions:", data.data)
-    console.log("specific question: ", data.data[0])
+    console.log("show all questions:", data.data)
+    console.log("show specific question: ", data.data[0])
   })
 
   $scope.updatePosition = function() {
@@ -104,6 +104,7 @@ angular.module('Roundup')
     });
   }
 }])
+
 .controller('EditQuestionCtrl', ['$scope', '$stateParams', '$state', 'QuestionService',
   function($scope, $stateParams, $state, QuestionService) {
 
