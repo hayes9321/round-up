@@ -1,14 +1,12 @@
 <div class="component">
-	<ul>
-	  <li style="font-size: 20px" ng-repeat="round in roundList.rounds">
-	  	<a ng-href="round/{{round._id}}">
-			  {{round.candidate.firstName}}
-			  {{round.candidate.lastName}}
-			  {{round.position.title}}
-			  {{round.position.description}}
-			</a>
-	  </li>
-	</ul>
+	<div ng-repeat="round in roundList.rounds" class="well">
+		<a ng-href="round/{{round._id}}">
+	  		<strong>{{round.candidate.firstName}}
+	  		{{round.candidate.lastName}}</strong><br>
+	  		{{round.position.title}}<br>
+	  		<em>{{round.position.description}}</em>
+		</a>
+	</div>
 </div>
 
 
