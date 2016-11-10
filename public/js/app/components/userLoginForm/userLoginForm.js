@@ -16,18 +16,16 @@
 
     userLoginForm.userLogin = function(){
       $http.post('/api/auth', userLoginForm.user).then(function success(res) {
-        console.log(userLoginForm.user);
-        console.log(res);
-        console.log(res.data);
         Auth.saveToken(res.data.token);
         Alerts.add('success', 'Logged in!');
         console.log('Token:', res.data.token);
         $location.path('/');
+        console.log('Auth', Auth.currentUser());
       }, function error(res) {
         Alerts.add('danger', 'Incorrect email/password');
         console.log(res);
       });
-      console.log('clicked');
+      
     }
   }
  

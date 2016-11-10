@@ -16,12 +16,17 @@ angular.module('Roundup')
       // console.log("is logged in?", result);
       return result;
     },
+    // {{WhateverCtrl.Auth.currentUser()._doc.email}}
     currentUser: function() {
+      console.log("currentUser()")
       if (this.isLoggedIn()) {
+        console.log("user is logged in")
         var token = this.getToken();
         try {
           var payload = JSON.parse($window.atob(token.split('.')[1]));
-          return payload;
+          var payload = payload;
+          console.log('the pay load', payload);
+          return payload
         } catch(err) {
           return false;
         }

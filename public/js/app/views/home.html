@@ -1,15 +1,18 @@
-<div>
-  <h1>Home view (not logged in)</h1>
-  <h2>Welcome - login or <a ng-href="/signup">sign up</a>!</h2>
-  <user-login-form> </user-login-form>
-</div>
+<div ng-controller="AuthCtrl">
+	<div ng-if="currentUser">
+	<h1>please log in</h1>
+	  <h1>Home view (not logged in)</h1>
+	  <h2>Welcome - login or <a ng-href="/signup">sign up</a>!</h2>
+	  <user-login-form> </user-login-form>
+	</div>
 
 <hr>
 
-<div>
-  <h1>Home view (if logged in)</h1>
-  <div><img ng-src="http://i209.photobucket.com/albums/bb237/pokeplayer984/LittlefootAbouttoEatTreestar.jpg" width="100"></div>
-  <a href="#" class="btn btn-info">Add New Candidate</a>
-  <p>list of candidates</p>
+	<div ng-show="currentUser">
+	  <h1>Hello: {{ currentUser._doc.firstName }}</h1>
+	  <div><img ng-src="http://i209.photobucket.com/albums/bb237/pokeplayer984/LittlefootAbouttoEatTreestar.jpg" width="100"></div>
+	  <a href="#" class="btn btn-info">Add New Candidate</a>
+	  <p>list of candidates</p>
+	</div>
 </div>
 

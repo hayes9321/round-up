@@ -126,10 +126,18 @@ angular.module('Roundup')
       $state.go('editRound', {id: $scope.round._id}, {reload : true});
     });
   }
-
-  $scope.updateQuestion = function() {
+    $scope.updateQuestion = function() {
     QuestionService.updateQuestion($scope.question, function(res) {
       $state.go('questions', {id: $scope.question._id});
     });
+  }
+}])
+.controller('AlertCtrl', ['$scope', 'Alerts', function($scope, Alerts) {
+  $scope.Alerts = Alerts;
+}])
+.controller('AuthCtrl', ['$scope', 'Auth', function($scope, Auth){
+  $scope.currentUser = {}
+  if(Auth.isLoggedIn()){
+    $scope.currentUser = Auth.currentUser();
   }
 }]);
