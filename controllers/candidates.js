@@ -17,6 +17,27 @@ router.post('/', function(req, res) {
     if (err) return res.send({message: 'An error occurred when creating a candidate'});
     res.send(candidate);
   });
+});
+
+router.get('/:id', function(req, res) {
+  Candidate.findById(req.params.id, function(err, candidate) {
+    if (err) return res.status(500).send(err);
+    return res.send(candidate);
+  });
+});
+
+router.put('/:id', function(req, res) {
+  Candidate.findByIdAndUpdate(req.params.id, req.body, function(err) {
+    if (err) return res.status(500).send(err);
+    return res.send({ message: 'success' });
+  });
+});
+
+router.delete('/:id', function(req, res) {
+  Candidate.findByIdAndRemove(req.params.id, function(err) {
+    if (err) return res.status(500).send(err);
+    return res.send({ message: 'success' });
+  });
   console.log('here: candidates - ', candidate);
 });
 

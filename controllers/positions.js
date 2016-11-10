@@ -21,4 +21,25 @@ router.post('/', function(req, res) {
   });
 });
 
+router.get('/:id', function(req, res) {
+  Position.findById(req.params.id, function(err, position) {
+    if (err) return res.status(500).send(err);
+    return res.send(position);
+  });
+});
+
+router.put('/:id', function(req, res) {
+  Position.findByIdAndUpdate(req.params.id, req.body, function(err) {
+    if (err) return res.status(500).send(err);
+    return res.send({ message: 'success' });
+  });
+});
+
+router.delete('/:id', function(req, res) {
+  Position.findByIdAndRemove(req.params.id, function(err) {
+    if (err) return res.status(500).send(err);
+    return res.send({ message: 'success' });
+  });
+});
+
 module.exports = router;

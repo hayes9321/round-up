@@ -8,13 +8,17 @@
 
   function QuestionList(QuestionService) {
     var questionList = this;
-    console.log("name: ", this);
+    questionList.delete = function(question) {
+      QuestionService.deleteQuestion(question, function(res) {
+        questionList.questions = questionList.questions.filter(function(item) {
+          return item !== question;
+        });
+      })
+    }
     questionList.questions = [];
 
     QuestionService.getAllQuestions(function(data) {
       questionList.questions = data.data;
-      console.log('data.data: ', data.data);
-      console.log('questionList.questions: ', questionList.questions);
     });
   }
 

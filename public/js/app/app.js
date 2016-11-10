@@ -11,6 +11,11 @@ angular.module('Roundup', ['ui.router'])
   	url: '/candidates',
   	templateUrl: 'js/app/views/candidates.html',
 	})
+  .state('editcandidates', {
+    url: '/candidates/:id',
+    templateUrl: 'js/app/views/editCandidate.html',
+    controller: 'EditCandidateCtrl'
+  })
 	.state('signup', {
   	url: '/signup',
   	templateUrl: 'js/app/views/signup.html',
@@ -30,6 +35,11 @@ angular.module('Roundup', ['ui.router'])
   .state('questions', {
     url: '/questions',
     templateUrl: 'js/app/views/questions.html',
+  })
+  .state('editQuestions', {
+    url: '/questions/:id',
+    templateUrl: 'js/app/views/editQuestion.html',
+    controller: 'EditQuestionCtrl'
   })
   .state('rounds', {
     url: '/rounds',
@@ -53,6 +63,11 @@ angular.module('Roundup', ['ui.router'])
   .state('positions',{
     url: '/positions',
     templateUrl: 'js/app/views/positions.html'
+  })
+  .state('editPositions',{
+    url: '/positions/:id',
+    templateUrl: 'js/app/views/editPosition.html',
+    controller: 'EditPositionCtrl'
   });
 
 	$locationProvider.html5Mode(true);
