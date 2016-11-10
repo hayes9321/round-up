@@ -1,9 +1,4 @@
 angular.module('Roundup')
-// .controller('HomeCtrl', ['$scope', '$state', 'UserService', 'CandidateService', 'QuestionService', 'PositionService', function($scope, $state, UserService, CandidateService, QuestionService, PositionService) {
-//   $scope.user = {};
-//   $scope.candidate = {};
-//   //$scope.questions = {};
-// }])
 
 .controller('RoundCtrl', ['$scope', '$state', 'QuestionService', 'CandidateService', 'UserService', 'RoundService', function($scope, $state, QuestionService, CandidateService, UserService, RoundService) {
   $scope.questions = {};
@@ -75,9 +70,7 @@ angular.module('Roundup')
   $scope.currentUser = {}
   if(Auth.isLoggedIn()){
     $scope.currentUser = Auth.currentUser();
-    console.log("currentUser" ,$scope.currentUser)
-    console.log("Im logged in")
   }
-  console.log("current" ,$scope.currentUser)
+
 }]);
 
