@@ -127,8 +127,6 @@ angular.module('Roundup')
     });
   }
 
-}]);
-
   $scope.updateQuestion = function() {
     QuestionService.updateQuestion($scope.question, function(res) {
       $state.go('questions', {id: $scope.question._id});
