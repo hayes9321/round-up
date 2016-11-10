@@ -2,9 +2,23 @@
 <em>components > newRoundForm > newRoundForm.html</em>
 
 	<form ng-submit="newRoundForm.submitRound()">
-	  <input type="number" placeholder="candidate id" ng-model="newRoundForm.newRound.candidateId">
-	  <input type="number" placeholder="position id" ng-model="newRoundForm.newRound.positionId">
+	  <input type="text" placeholder="First Name" ng-model="newRoundForm.newRound.candidate.firstName">
+	  <input type="text" placeholder="Last Name" ng-model="newRoundForm.newRound.candidate.lastName">
+
+	  <input type="text" placeholder="Position Title" ng-model="newRoundForm.newRound.position.title">
+	  <input type="text" placeholder="Position Description" ng-model="newRoundForm.newRound.position.description">
+
 	  <input type="submit">
 	</form>
 
 </div>
+
+<!-- <div class="component">
+  <div style="width: 300px;">
+    <form ng-submit="newCandidateForm.submitCandidate()">
+      <input type="text" placeholder="First Name" ng-model="newCandidateForm.newCandidate.firstName">
+      <input type="text" placeholder="Last Name" ng-model="newCandidateForm.newCandidate.lastName">
+      <input type="submit">
+    </form>
+  </div>
+</div> -->

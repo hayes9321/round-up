@@ -1,6 +1,25 @@
 <h1>Edit Interview Round</h1>
+<h3>Round Info:</h3>
+{{round.candidate.firstName}}
+{{round.candidate.lastName}}<br>
+{{round.position.title}}<br>
+<em>{{round.position.description}}</em>
 
-<form>
+<h3>Questions</h3>
+<div ng-repeat="question in round.questions track by $index">
+{{question}}
+</div>
+
+<h3> Select Question </h3>
+<form ng-submit="submitQuestionToRound()">
+ <input type="text" placeholder="Enter question" ng-model="newQuestion">
+ <input type="submit">
+</form>
+
+
+<hr>
+
+<!-- <form>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
 			<h3>Select existing candidate</h3>
@@ -42,14 +61,14 @@
 </form>
 
 <h3> Select Round </h3>
-<!-- <form>
+<! <form>
 	<select>
 		<option selected disabled>Select Round</option>
 		<option ng-repeat="user in users" value="{{user._id}}">{{user.lastName}}, {{user.firstName}} ({{user.title}})</option>
 	</select>
 </form> -->
 
-	<div ng-repeat="round in rounds">{{round}}</div>
+<!-- 	<div ng-repeat="round in rounds">round in rounds: {{round}}</div>
 
 <div>
 
@@ -58,4 +77,4 @@
 </div>
 
 
-</div>
+</div>  -->

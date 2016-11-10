@@ -16,8 +16,8 @@ router.post('/', function(req, res) {
   candidate.save(function(err) {
     if (err) return res.send({message: 'An error occurred when creating a candidate'});
     res.send(candidate);
-    console.log(candidate);
   });
+  console.log('here: candidates - ', candidate);
 });
 
 module.exports = router;
