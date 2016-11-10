@@ -23,28 +23,28 @@
 
     $scope.$watch('q1', function(newVal, oldVal){
       if (newVal && newVal.question){
-      newPositionForm.newPosition.questions.push(newVal._id);
+      newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
 
     $scope.$watch('q2', function(newVal, oldVal){
       if (newVal && newVal.question){
-      newPositionForm.newPosition.questions.push(newVal._id);
+      newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
     $scope.$watch('q3', function(newVal, oldVal){
       if (newVal && newVal.question){
-      newPositionForm.newPosition.questions.push(newVal._id);
+      newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
     $scope.$watch('q4', function(newVal, oldVal){
       if (newVal && newVal.question){
-      newPositionForm.newPosition.questions.push(newVal._id);
+      newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
     $scope.$watch('q5', function(newVal, oldVal){
       if (newVal && newVal.question){
-      newPositionForm.newPosition.questions.push(newVal._id);
+      newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
 
