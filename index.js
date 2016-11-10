@@ -24,6 +24,7 @@ app.use('/api/questions', require('./controllers/questions'), expressJWT({secret
 app.use('/api/positions', require('./controllers/positions'), expressJWT({secret: secret}));
 app.use('/api/rounds', require('./controllers/rounds'), expressJWT({secret: secret}));
 
+
 // app.use('/api/auth', require('./controllers/auth'));
 // app.use('/api/users', require('./controllers/users'));
 // app.use('/api/candidates', require('./controllers/candidates'));
