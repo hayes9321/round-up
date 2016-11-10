@@ -43,6 +43,31 @@ angular.module('Roundup')
       console.log('Add Candidate error');
     });
   }
+  //show one candidates details
+  this.getCandidate = function(id, callback) {
+    $http.get('/api/candidates/' + id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+
+  //edit one candidate
+  this.updateCandidate = function(candidate, callback) {
+    $http.put('/api/candidates/' + candidate._id, candidate).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+  //delete one candidate
+  this.deleteCandidate = function(candidate, callback) {
+    $http.delete('/api/candidates/' + candidate._id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
 }])
 .service('QuestionService', ['$http', function($http) {
   this.getAllQuestions = function(callback) {

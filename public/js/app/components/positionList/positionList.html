@@ -1,7 +1,21 @@
-<ul>
-  <li style="font-size: 20px" ng-repeat="position in positionList.positions | orderBy: 'jobTitle'">
-    <a href="positions/{{position._id}}">
+<style>
+.well {
+  padding: 5px 19px 10px 19px;
+}
+.list {
+  font-size: 20px;
+  list-style: none;
+  padding-left: 0px;
+}
+</style>
+
+<ul class="list">
+  <li ng-repeat="position in positionList.positions | orderBy: 'jobTitle'">
+    <div class="well">
       {{position.jobTitle}}
-    </a>
+      <br>
+      <a href="/positions/{{position._id}}"><button style="font-size: 13px">Edit</button></a>
+      <button ng-click="positionsList.delete(position)" style="font-size: 13px; color: red">Remove</button>
+    </div>
   </li>
 </ul>

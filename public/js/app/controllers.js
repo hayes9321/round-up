@@ -65,7 +65,21 @@ angular.module('Roundup')
   RoundService.getRound(id, function(res) {
   	$scope.round = res.data
   });
+}])
 
+.controller('EditCandidateCtrl', ['$scope', '$stateParams', '$state', 'CandidateService',
+    function($scope, $stateParams, $state, CandidateService) {
 
+  var id = $stateParams.id;
+  CandidateService.getCandidate(id, function(res) {
+    console.log("got cand:", res);
+    $scope.candidate = res.data;
+  });
+
+  $scope.updateCandidate = function() {
+    CandidateService.updateCandidate($scope.candidate, function(res) {
+      $state.go('candidates', {id: $scope.candidate._id});
+    });
+  }
 }]);
 

@@ -11,6 +11,11 @@ angular.module('Roundup', ['ui.router'])
   	url: '/candidates',
   	templateUrl: 'js/app/views/candidates.html',
 	})
+  .state('editcandidates', {
+    url: '/candidates/:id',
+    templateUrl: 'js/app/views/editCandidate.html',
+    controller: 'EditCandidateCtrl'
+  })
 	.state('signup', {
   	url: '/signup',
   	templateUrl: 'js/app/views/signup.html',

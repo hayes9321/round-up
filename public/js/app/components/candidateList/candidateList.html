@@ -1,5 +1,21 @@
-<ul>
-  <li style="font-size: 20px" ng-repeat="candidate in candidateList.candidates | orderBy: 'firstName'">
-   <a href="candidates/{{candidate._id}}">{{candidate.firstName}} {{candidate.lastName}}</a>
+<style>
+.well {
+  padding: 5px 19px 10px 19px;
+}
+.list {
+  font-size: 20px;
+  list-style: none;
+  padding-left: 0px;
+}
+</style>
+
+<ul class="list">
+  <li ng-repeat="candidate in candidateList.candidates | orderBy: 'firstName'">
+    <div class="well">
+      {{candidate.firstName}} {{candidate.lastName}}
+      <br>
+      <a href="/candidates/{{candidate._id}}"><button style="font-size: 13px">Edit</button></a>
+      <button ng-click="candidateList.delete(candidate)" style="font-size: 13px; color: red">Remove</button>
+    </div>
   </li>
 </ul>
