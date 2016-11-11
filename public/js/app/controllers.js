@@ -63,6 +63,18 @@ angular.module('Roundup')
   RoundService.getRound(id, function(res) {
   	$scope.round = res.data;
   });
+
+  $scope.updateRound = function() {
+    RoundService.updateRound($scope.round, function(res) {
+      $state.go('rounds', {id: $scope.round._id});
+    });
+  }
+
+  $scope.deleteRound = function(round){
+    RoundService.deleteRound(round, function(res){
+      $state.go('rounds');
+    })
+  }
 }])
 
 .controller('EditCandidateCtrl', ['$scope', '$stateParams', '$state', 'CandidateService',

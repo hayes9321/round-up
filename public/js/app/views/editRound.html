@@ -1,80 +1,31 @@
-<h1>Edit Interview Round</h1>
+<h3>Edit Interview Round</h3>
+<a href="/rounds"><span class="glyphicon glyphicon-arrow-left"></span> Back to Rounds</a>
+
 <h3>Round Info:</h3>
-{{round.candidate.firstName}}
-{{round.candidate.lastName}}<br>
-{{round.position.title}}<br>
-<em>{{round.position.description}}</em>
+	<form ng-submit="updateRound()">
+		<div style="width: 300px;">
+			Candidate Name
+			<input type="text" class="form-control" ng-model="round.candidate.firstName">
+		  <input type="text" class="form-control" ng-model="round.candidate.lastName"><br>
+	  </div>
+		Job Title:
+		<input style="width: 300px" class="form-control" type="text" ng-model="round.position.title">
+	  Description:
+	  <input class="form-control" type="text" style="width: 95%" style="width: 380px" ng-model="round.position.description"><br>
+	  Interview Questions:
+		<div ng-repeat="question in round.questions track by $index">
+	  	<input class="form-control" ng-model="question.question" style="width: 95%">
+	  </div>
+	  <br>
+	  <input type="submit" value="Submit Changes">
+	</form>
+	<br>
+<hr>
 
-<h3>Questions</h3>
-<div ng-repeat="question in round.questions track by $index">
-{{question.question}}
-</div>
-
-<h3> Select Question </h3>
-<form ng-submit="submitQuestionToRound()">
+<h3>Add Interview Question </h3>
+<form ng-submit="addQuestionToRound()">
  <input type="text" placeholder="Enter question" ng-model="newQuestion">
  <input type="submit">
 </form>
-
-
 <hr>
-
-<!-- <form>
-	<div class="row">
-		<div class="col-xs-12 col-sm-6">
-			<h3>Select existing candidate</h3>
-				<select>
-					<option selected disabled>Select Candidate</option>
-					<option ng-repeat="candidate in candidates" value="{{candidate._id}}">{{candidate.lastName}}, {{candidate.firstName}}</option>
-				</select>
-		</div>
-
-		<div class="col-xs-12 col-sm-6">
-			<h3>Add new candidate</h3>
-			<new-candidate-form></new-candidate-form>
-		</div>
-	</div>
-
-
-</form>
-
- <hr>
-<div>
-
-<h2>testing</h2>
-
-<h3> Select Question </h3>
-<form>
-	<select name="select question">
-		<option selected disabled>Choose here</option>
-		<option ng-repeat="question in questions" value="{{question._id}}">{{question.question}}</option>
-	</select>
-</form>
-
-
-<h3> Select User (Interviewer) </h3>
-<form>
-	<select>
-		<option selected disabled>Select Interviewer</option>
-		<option ng-repeat="user in users" value="{{user._id}}">{{user.lastName}}, {{user.firstName}} ({{user.title}})</option>
-	</select>
-</form>
-
-<h3> Select Round </h3>
-<! <form>
-	<select>
-		<option selected disabled>Select Round</option>
-		<option ng-repeat="user in users" value="{{user._id}}">{{user.lastName}}, {{user.firstName}} ({{user.title}})</option>
-	</select>
-</form> -->
-
-<!-- 	<div ng-repeat="round in rounds">round in rounds: {{round}}</div>
-
-<div>
-
-<new-round-form></new-round-form>
-
-</div>
-
-
-</div>  -->
+	<button ng-click="deleteRound(round)" style="font-size: 13px; color: red">DELETE THIS ROUND</button><br><br>
