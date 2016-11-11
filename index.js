@@ -13,12 +13,12 @@ mongoose.connect('mongodb://localhost/roundup');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('morgan')('dev'));
 
 
 app.use('/api/auth', require('./controllers/auth'), expressJWT({secret: secret}).unless({method: 'POST'}));
-app.use('/api/users', require('./controllers/users'),  expressJWT({secret: secret}).unless({method: 'POST'}));
+app.use('/api/users', require('./controllers/users'), expressJWT({secret: secret}).unless({method: 'POST'}));
 app.use('/api/candidates', require('./controllers/candidates'), expressJWT({secret: secret}));
 app.use('/api/questions', require('./controllers/questions'), expressJWT({secret: secret}));
 app.use('/api/positions', require('./controllers/positions'), expressJWT({secret: secret}));

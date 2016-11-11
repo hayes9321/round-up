@@ -4,7 +4,9 @@ var roundSchema = new mongoose.Schema({
   candidate: { firstName: String, lastName: String},
   position: { title: String, description: String},
   date: String,
-  questions: [],
+  //questions: [],
+  questions: [
+  {question: String}],
   interviews: []
 });
 
