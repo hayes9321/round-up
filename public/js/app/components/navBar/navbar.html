@@ -1,19 +1,30 @@
 <nav class="navbar navbar-default navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <a class="navbar-brand" href="/">RoundUp</a>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signup" ng-show="navBar.Auth.isLoggedIn()">Signup</a></li>
-        <li><a href="/positions" ng-show="navBar.Auth.isLoggedIn()">Positions</a></li>
-        <li><a href="/questions" ng-show="navBar.Auth.isLoggedIn()">Questions</a></li>
-        <li><a href="/candidates" ng-show="navBar.Auth.isLoggedIn()">Candidates</a></li>
-        <li><a href="/interview" ng-show="navBar.Auth.isLoggedIn()">Interview Candidate</a></li>
-        <li><a href="/rounds" ng-show="navBar.Auth.isLoggedIn()">Rounds</a></li>
-        <li>logged in: {{navBar.Auth.isLoggedIn()}}</li>
-        <!-- <li><a href="/signup" ng-show="navBar.Auth.isLoggedIn()">Signup</a></li>
-        <li><a href="/candidates" ng-show="navBar.Auth.isLoggedIn()">View All Candidates</a></li>
-        <li><a href="/candidates/new" ng-show="navBar.Auth.isLoggedIn()">Create New Candidate</a></li>
-        <li><a href="/interview" ng-show="navBar.Auth.isLoggedIn()">Interview Candidate</a></li> -->
-        <li><a ng-click="navBar.logout()" ng-show="navBar.Auth.isLoggedIn()">Logout</a></li>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a ng-show="navBar.Auth.isLoggedIn()" class="dropdown-toggle" data-toggle="dropdown" href="#">Site Navigation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/positions">Positions</a></li>
+            <li><a href="/questions">Questions</a></li>
+            <li><a href="/candidates">Candidates</a></li>
+            <li><a href="/interview">Interview Candidate</a></li>
+            <li><a href="/rounds">Rounds</a></li>
+          </ul>
+        </li>
+        <li><a ng-hide="navBar.Auth.isLoggedIn()" href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a ng-show="navBar.Auth.isLoggedIn()" ng-click="navBar.logout()" href="/" ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
   </div>
 </nav>

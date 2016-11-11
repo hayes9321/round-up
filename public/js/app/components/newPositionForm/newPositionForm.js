@@ -21,28 +21,28 @@
       questions: []
     };
 
-    $scope.$watch('q1', function(newVal, oldVal){
+    $scope.$watch('q1', function(newVal){
       if (newVal && newVal.question){
       newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
 
-    $scope.$watch('q2', function(newVal, oldVal){
+    $scope.$watch('q2', function(newVal){
       if (newVal && newVal.question){
       newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
-    $scope.$watch('q3', function(newVal, oldVal){
+    $scope.$watch('q3', function(newVal){
       if (newVal && newVal.question){
       newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
-    $scope.$watch('q4', function(newVal, oldVal){
+    $scope.$watch('q4', function(newVal){
       if (newVal && newVal.question){
       newPositionForm.newPosition.questions.push(newVal.question);
       }
     });
-    $scope.$watch('q5', function(newVal, oldVal){
+    $scope.$watch('q5', function(newVal){
       if (newVal && newVal.question){
       newPositionForm.newPosition.questions.push(newVal.question);
       }
@@ -57,6 +57,7 @@
       PositionService.getAllPositions(function(data) {
         newPositionForm.positions = data.data;
           $state.go('positions', {}, {reload : true});
+          console.log(newPositionForm.newPosition);
       });
     });
   }
