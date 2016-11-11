@@ -38,12 +38,15 @@
       newRoundForm.positions = data.data;
     });
 
+    newRoundForm.someThing = "addingCandidate";
+
     newRoundForm.addCandidate = function() {
       CandidateService.getCandidate(newRoundForm.selectedCandidate, function(res) {
         newRoundForm.candidate = res.data;
         newRoundForm.newRound.candidate.firstName = newRoundForm.candidate.firstName;
         newRoundForm.newRound.candidate.lastName = newRoundForm.candidate.lastName;
         console.log('candidate data added: ', newRoundForm.newRound);
+        newRoundForm.someThing = "addingPosition";
       });
     }
 
@@ -60,6 +63,7 @@
           console.log('new round with new questions: ', newRoundForm.newRound);
           console.log('compile questions: ', compileQuestions);
           newRoundForm.newRound.questions = compileQuestions;
+          newRoundForm.someThing = "addingInterviews";
         });
 
         newRoundForm.position = res.data;
