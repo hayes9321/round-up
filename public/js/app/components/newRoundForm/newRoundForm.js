@@ -6,9 +6,13 @@
     controllerAs: 'newRoundForm'
   });
 
-  function NewRoundForm($state, RoundService) {
+  function NewRoundForm($state, RoundService, CandidateService, PositionService) {
     var newRoundForm = this;
-    newRoundForm.rounds = [];
+    //newRoundForm.rounds = [];
+    newRoundForm.candidates = {};
+    newRoundForm.positions = {};
+    newRoundForm.selectedCandidate = {};
+    newRoundForm.selectedPosition = {};
     newRoundForm.newRound = {
       candidate: {
         firstName: '',
@@ -17,32 +21,61 @@
       position: {
         title: '',
         description: ''
-      }
+      },
+      questions: []
     };
-    // newRoundForm.newRound.candidate = {
-    //   firstName: '',
-    //   lastName: ''
-    // };
-    // newRoundForm.newRound.position = {
-    //   title: '',
-    //   description: ''
-    // };
 
-  newRoundForm.submitRound = function() {
-    console.log('component newRoundForm.js, newRoundForm.submitRound() firing');
-    console.log('submitRound data (newRoundForm.newRound) its sending to services: ', newRoundForm.newRound);
-    RoundService.addRound(newRoundForm.newRound, function(data) {
-      console.log('round service firing, data: ', data);
-      // reload page with all rounds
-      // RoundService.getAllRounds(function(data) {
-      //   newRoundForm.rounds = data.data;
-      //   console.log('newRoundForm.candidate: ', newRoundForm.rounds);
-        $state.go('createRound', {}, {reload : true});
-       // });
+    CandidateService.getAllCandidates(function(data) {
+      newRoundForm.candidates = data.data;
     });
 
-  }
+    PositionService.getAllPositions(function(data) {
+      newRoundForm.positions = data.data;
+    });
+
+    newRoundForm.addCandidate = function() {
+      CandidateService.getCandidate(newRoundForm.selectedCandidate, function(res) {
+        newRoundForm.candidate = res.data;
+        newRoundForm.newRound.candidate.firstName = newRoundForm.candidate.firstName;
+        newRoundForm.newRound.candidate.lastName = newRoundForm.candidate.lastName;
+        console.log('candidate data added: ', newRoundForm.newRound);
+      });
+    }
+
+    newRoundForm.addPosition = function() {
+      PositionService.getPosition(newRoundForm.selectedPosition, function(res) {
+        console.log('position questions?', res.data.questions);
+
+        var existingQuestions = res.data.questions;
+        var compileQuestions = [];
+        console.log('questions: ', compileQuestions);
+
+        existingQuestions.forEach(function(question){
+          compileQuestions.push({question});
+          console.log('new round with new questions: ', newRoundForm.newRound);
+          console.log('compile questions: ', compileQuestions);
+          newRoundForm.newRound.questions = compileQuestions;
+        });
+
+        newRoundForm.position = res.data;
+        newRoundForm.newRound.position.title = newRoundForm.position.jobTitle;
+        newRoundForm.newRound.position.description = newRoundForm.position.description;
+        newRoundForm.newRound.position.questions = compileQuestions;
+        console.log('position data added: ', newRoundForm.newRound);
+      });
+    }
+
+    newRoundForm.createRound = function() {
+      RoundService.addRound(newRoundForm.newRound, function(data) {
+        console.log('newRoundForm.newRound: ', newRoundForm.newRound);
+        var newRoundId = data.data._id;
+        window.location.href = '/round/' + newRoundId;
+        //console.log('new round added: ', data.data);
+      }); 
+    }
+
 }
 
-  NewRoundForm.$inject = ['$state', 'RoundService'];
+  NewRoundForm.$inject = ['$state', 'RoundService', 'CandidateService', 'PositionService'];
 })()
+
