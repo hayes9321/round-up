@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/roundup');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('morgan')('dev'));
 
 
