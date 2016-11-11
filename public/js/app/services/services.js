@@ -181,6 +181,7 @@ angular.module('Roundup')
 
   // CREATE NEW ROUND
   this.addRound = function(roundData, callback) {
+    console.log('roundData in create round service', roundData);
     $http.post('/api/rounds', roundData).then(function success(res) {
       callback(res);
     }, function error(res) {

@@ -1,24 +1,40 @@
 <div class="component">
-<em>components > newRoundForm > newRoundForm.html</em>
+	<em>newRoundForm > newRoundForm.html</em>
 
-	<form ng-submit="newRoundForm.submitRound()">
-	  <input type="text" placeholder="First Name" ng-model="newRoundForm.newRound.candidate.firstName">
-	  <input type="text" placeholder="Last Name" ng-model="newRoundForm.newRound.candidate.lastName">
 
-	  <input type="text" placeholder="Position Title" ng-model="newRoundForm.newRound.position.title">
-	  <input type="text" placeholder="Position Description" ng-model="newRoundForm.newRound.position.description">
+<!-- ADD CANDIDATE -->
+<h3>Add Candidate</h3>
+<form ng-submit="newRoundForm.addCandidate()">
+	<select ng-model="newRoundForm.selectedCandidate">
+		<option selected disabled value="none">Select Candidate</option>
+		<option ng-repeat="candidate in newRoundForm.candidates"
+				name="{{candidate}}" id="{{candidate}}"
+				value="{{candidate._id}}">
+			{{candidate.lastName}}, {{candidate.firstName}}
+		</option>
+	</select>
+<input type="submit" value="Save Candidate" class="btn btn-info">
+</form>
 
-	  <input type="submit">
-	</form>
+<!-- ADD POSITION -->
+
+<h3>Add position</h3>
+<form ng-submit="newRoundForm.addPosition()">
+	<select ng-model="newRoundForm.selectedPosition">
+		<option selected disabled value="none">Select Position</option>
+		<option ng-repeat="position in newRoundForm.positions"
+				name="{{position}}" id="{{position}}"
+				value="{{position._id}}">
+			{{position.jobTitle}}
+		</option>
+	</select>
+<input type="submit" value="Add Position" class="btn btn-info">
+</form>
+
+<!-- CREATE ROUND -->
+
+<button ng-click="newRoundForm.createRound()" class="btn btn-default">Create Round</button>
+
 
 </div>
 
-<!-- <div class="component">
-  <div style="width: 300px;">
-    <form ng-submit="newCandidateForm.submitCandidate()">
-      <input type="text" placeholder="First Name" ng-model="newCandidateForm.newCandidate.firstName">
-      <input type="text" placeholder="Last Name" ng-model="newCandidateForm.newCandidate.lastName">
-      <input type="submit">
-    </form>
-  </div>
-</div> -->
