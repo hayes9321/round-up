@@ -3,7 +3,11 @@
   .component('newRoundForm', {
     templateUrl: 'js/app/components/newRoundForm/newRoundForm.html',
     controller: NewRoundForm,
-    controllerAs: 'newRoundForm'
+    controllerAs: 'newRoundForm',
+    bindings: {
+      interviewInput: '=',
+      interviewList: '='
+    }
   });
 
   function NewRoundForm($state, RoundService, CandidateService, PositionService) {
@@ -22,7 +26,8 @@
         title: '',
         description: ''
       },
-      questions: []
+      questions: [],
+      interviews: []
     };
 
     CandidateService.getAllCandidates(function(data) {
@@ -33,12 +38,15 @@
       newRoundForm.positions = data.data;
     });
 
+    newRoundForm.someThing = "addingCandidate";
+
     newRoundForm.addCandidate = function() {
       CandidateService.getCandidate(newRoundForm.selectedCandidate, function(res) {
         newRoundForm.candidate = res.data;
         newRoundForm.newRound.candidate.firstName = newRoundForm.candidate.firstName;
         newRoundForm.newRound.candidate.lastName = newRoundForm.candidate.lastName;
         console.log('candidate data added: ', newRoundForm.newRound);
+        newRoundForm.someThing = "addingPosition";
       });
     }
 
@@ -55,6 +63,7 @@
           console.log('new round with new questions: ', newRoundForm.newRound);
           console.log('compile questions: ', compileQuestions);
           newRoundForm.newRound.questions = compileQuestions;
+          newRoundForm.someThing = "addingInterviews";
         });
 
         newRoundForm.position = res.data;
@@ -65,12 +74,24 @@
       });
     }
 
+    //newRoundForm.showAddInterviewForm = false;
+    //newRoundForm.addInterviewButtonText = 'Add Interview Session';
+    newRoundForm.addingInterview = function() {
+      newRoundForm.showAddInterviewForm = true;
+    }
+
+    newRoundForm.addInterviewForm = {};
+    newRoundForm.addInterview = function() {
+      interviewObject = {name: newRoundForm.newInterview};
+      newRoundForm.newRound.interviews.push(interviewObject);
+      newRoundForm.newInterview = '';
+      console.log('current round wiht interviews: ', newRoundForm.newRound);
+    }
+
     newRoundForm.createRound = function() {
       RoundService.addRound(newRoundForm.newRound, function(data) {
-        console.log('newRoundForm.newRound: ', newRoundForm.newRound);
         var newRoundId = data.data._id;
         window.location.href = '/round/' + newRoundId;
-        //console.log('new round added: ', data.data);
       }); 
     }
 
