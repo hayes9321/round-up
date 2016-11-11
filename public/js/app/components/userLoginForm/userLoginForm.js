@@ -6,7 +6,7 @@
     controllerAs: 'userLoginForm'
   });
 
-  function UserLoginForm($http, $state, $location, Auth, Alerts){
+  function UserLoginForm($http, $state, $location, $rootScope, Auth, Alerts){
     var userLoginForm = this;
 
     userLoginForm.user = {
@@ -18,6 +18,7 @@
       $http.post('/api/auth', userLoginForm.user).then(function success(res) {
         Auth.saveToken(res.data.token);
         Alerts.add('success', 'Logged in!');
+        $rootScope.$broadcast('loggedIn');
         console.log('Token:', res.data.token);
         $location.path('/');
         console.log('Auth', Auth.currentUser());
@@ -29,6 +30,6 @@
     }
   }
  
-  UserLoginForm.$inject = ['$http','$state', '$location', 'Auth','Alerts'];
+  UserLoginForm.$inject = ['$http','$state', '$location','$rootScope', 'Auth','Alerts'];
 })()
 
