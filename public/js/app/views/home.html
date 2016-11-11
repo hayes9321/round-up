@@ -9,7 +9,7 @@
 <hr>
 
 	<div ng-show="loggedIn">
-	  <h1>Hello: {{ currentUser._doc.firstName }}</h1>
+	  <h1 ng-show="loggedIn"> Hello: {{ currentUser._doc.firstName }}</h1>
 	  <div><img ng-src="http://i209.photobucket.com/albums/bb237/pokeplayer984/LittlefootAbouttoEatTreestar.jpg" width="100"></div>
 	  <a href="#" class="btn btn-info">Add New Candidate</a>
 	  <p>list of candidates</p>
