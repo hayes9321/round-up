@@ -9,6 +9,7 @@ angular.module('Roundup')
     },
     removeToken: function() {
       $window.localStorage.removeItem('secret-token');
+
     },
     isLoggedIn: function() {
       var token = this.getToken();
