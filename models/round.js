@@ -6,8 +6,9 @@ var roundSchema = new mongoose.Schema({
   date: String,
   //questions: [],
   questions: [
-  {question: String}],
-  interviews: []
+  	{question: String}],
+  interviews: [
+  	{name: String}]
 });
 
 var Round = mongoose.model('Round', roundSchema);
