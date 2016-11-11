@@ -1,19 +1,5 @@
 <div class="component">
-	<em>OLD components > newRoundForm > newRoundForm.html</em>
-
-	<!-- 	<form ng-submit="newRoundForm.submitRound()">
-		  <input type="text" placeholder="First Name" ng-model="newRoundForm.newRound.candidate.firstName">
-		  <input type="text" placeholder="Last Name" ng-model="newRoundForm.newRound.candidate.lastName">
-
-		  <input type="text" placeholder="Position Title" ng-model="newRoundForm.newRound.position.title">
-		  <input type="text" placeholder="Position Description" ng-model="newRoundForm.newRound.position.description">
-
-		  <input type="submit">
-		</form> -->
-
-	<!-- <form ng-submit="newRoundForm.submitRound()"> -->
-
-	<button ng-click="newRoundForm.createRound()" class="btn btn-default">Create Round</button>
+	<em>newRoundForm > newRoundForm.html</em>
 
 
 <!-- ADD CANDIDATE -->
@@ -45,36 +31,10 @@
 <input type="submit" value="Add Position" class="btn btn-info">
 </form>
 
-	
+<!-- CREATE ROUND -->
 
+<button ng-click="newRoundForm.createRound()" class="btn btn-default">Create Round</button>
 
-<hr>failed test:
-
-	<form ng-submit="newRoundForm.submitRound()">
-<!-- 		<h3>Add candidate</h3>
-			<select ng-model="newRoundForm.selectedCandidate">
-				<option selected disabled value="none">Select Candidate</option>
-				<option ng-repeat="candidate in newRoundForm.candidates"
-						name="{{candidate}}" id="{{candidate}}"
-						value="{{candidate._id}}">
-					{{candidate.lastName}}, {{candidate.firstName}}
-				</option>
-			</select> -->
-
-		<h3>Add position</h3>
-			<select ng-model="newRoundForm.selectedPosition">
-				<option selected disabled value="none">Select Position</option>
-				<option ng-repeat="position in newRoundForm.positions"
-						name="{{position}}" id="{{position}}"
-						value="{{position._id}}">
-					{{position.jobTitle}}
-				</option>
-			</select>
-
-		<input type="submit" value="next/create">
-	
-
-	</form>
 
 </div>
 
