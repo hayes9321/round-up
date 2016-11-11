@@ -3,7 +3,11 @@
   .component('newRoundForm', {
     templateUrl: 'js/app/components/newRoundForm/newRoundForm.html',
     controller: NewRoundForm,
-    controllerAs: 'newRoundForm'
+    controllerAs: 'newRoundForm',
+    bindings: {
+      interviewInput: '=',
+      interviewList: '='
+    }
   });
 
   function NewRoundForm($state, RoundService, CandidateService, PositionService) {
@@ -22,7 +26,8 @@
         title: '',
         description: ''
       },
-      questions: []
+      questions: [],
+      interviews: []
     };
 
     CandidateService.getAllCandidates(function(data) {
@@ -65,12 +70,24 @@
       });
     }
 
+    //newRoundForm.showAddInterviewForm = false;
+    //newRoundForm.addInterviewButtonText = 'Add Interview Session';
+    newRoundForm.addingInterview = function() {
+      newRoundForm.showAddInterviewForm = true;
+    }
+
+    newRoundForm.addInterviewForm = {};
+    newRoundForm.addInterview = function() {
+      interviewObject = {name: newRoundForm.newInterview};
+      newRoundForm.newRound.interviews.push(interviewObject);
+      newRoundForm.newInterview = '';
+      console.log('current round wiht interviews: ', newRoundForm.newRound);
+    }
+
     newRoundForm.createRound = function() {
       RoundService.addRound(newRoundForm.newRound, function(data) {
-        console.log('newRoundForm.newRound: ', newRoundForm.newRound);
         var newRoundId = data.data._id;
         window.location.href = '/round/' + newRoundId;
-        //console.log('new round added: ', data.data);
       }); 
     }
 
