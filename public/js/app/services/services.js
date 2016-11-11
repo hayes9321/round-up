@@ -95,7 +95,6 @@ angular.module('Roundup')
       console.log(res);
     });
   }
-
   //edit one question
   this.updateQuestion = function(question, callback) {
     $http.put('/api/questions/' + question._id, question).then(function success(res) {
@@ -124,7 +123,6 @@ angular.module('Roundup')
       console.log(res);
     });
   }
-
   this.addPosition = function(positionData, callback) {
     $http.post('/api/positions', positionData).then(function success(res) {
       callback(res);
@@ -158,7 +156,6 @@ angular.module('Roundup')
 }])
 
 .service('RoundService', ['$http', function($http) {
-
   //GET ALL ROUNDS
   this.getAllRounds = function(callback) {
     $http({
@@ -169,7 +166,6 @@ angular.module('Roundup')
     }, function error(res) {
     });
   }
-
   //Get specific round
   this.getRound = function(id, callback) {
     $http.get('/api/rounds/' + id).then(function success(res) {
@@ -178,7 +174,6 @@ angular.module('Roundup')
       console.log(res);
     });
   }
-
   // CREATE NEW ROUND
   this.addRound = function(roundData, callback) {
     console.log('roundData in create round service', roundData);
@@ -187,23 +182,29 @@ angular.module('Roundup')
     }, function error(res) {
     });
   }
-
-// EDIT SPECIFIC ROUND - !!(no front end for this yet)
+// EDIT SPECIFIC ROUND
   this.updateRound = function(round, callback) {
-    $http.put('/api/rounds/' + round._id).then(function success(res) {
+    console.log("in update round")
+    $http.put('/api/rounds/' + round._id, round).then(function success(res) {
       callback(res);
     }, function error(res) {
       console.log(res);
     });
   }
-
-// ADD NEW QUESTION TO EXISTING ROUND
+  //delete a Round
+  this.deleteRound = function(round, callback) {
+    $http.delete('/api/rounds/' + round._id).then(function success(res) {
+      callback(res);
+    }, function error(res) {
+      console.log(res);
+    });
+  }
+//ADD NEW QUESTION TO EXISTING ROUND
   this.addQuestionToRound = function(questionData, roundId, callback) {
-    $http.put('/api/rounds/' + roundId + '/questions', questionData).then(function success(res) {
+    $http.post('/api/rounds/' + roundId + '/questions', questionData).then(function success(res) {
       callback(res);
     }, function error(res) {
-      console.log(res);
+      console.log('Add Question to Round Error: ', res);
     });
   }
-
 }]);
